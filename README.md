@@ -7,7 +7,7 @@ Implementation of trial project for CSV transaction files comparison
 
 ### Assumptions
 
-- Non-unique records may exist
+- ~~Non-unique records may exist~~ TransactionID is used as a unique identifier
 - All possible matches of exceptions should be evaluated and scored  
 
 ## HOWTO
