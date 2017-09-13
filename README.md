@@ -46,7 +46,7 @@ This is also the first time I use Spring Boot's default Tomcat as I normally pre
 #### Frontend
 
 The font-end is a simple SPA following the mockup. The SPA also adds a comparison table component where client and tutuka
-markoffs are given the x and y axis respectively. The table cells provide the overall match score between the records and
+markoffs are given the x and y axis respectively. The table cells show the overall match score between the records and
 provide a tooltip for visual comparison (pending)
 
 ## HOWTO
