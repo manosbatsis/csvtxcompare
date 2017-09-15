@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * {@inheritDoc}
@@ -25,13 +26,19 @@ public class ClientMarkoffFile extends MarkoffFile {
 	@JoinColumn(nullable = false, updatable = false, unique = true)
 	private MarkoffFilesComparison markoffFilesComparison;
 
+	/**
+	 * Used as hint to lombok's {@link Builder}
+	 */
 	@Builder
-	public ClientMarkoffFile(String id, Integer totalRecords, MarkoffFilesComparison markoffFilesComparison, List<MismatchedRecord> mismatches) {
-		super(id, totalRecords, mismatches);
+	public ClientMarkoffFile(String id, Integer totalRecords, String fileName, Long fileSize, List<MarkoffRecord> mismatches, List<MarkoffRecord> records, MarkoffFilesComparison markoffFilesComparison) {
+		super(id, totalRecords, fileName, fileSize, mismatches, records);
 		this.markoffFilesComparison = markoffFilesComparison;
 	}
 
-	public ClientMarkoffFile(String id, Integer totalRecords, List<MismatchedRecord> mismatches) {
-		super(id, totalRecords, mismatches);
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this)
+				.appendSuper(super.toString())
+				.toString();
 	}
 }

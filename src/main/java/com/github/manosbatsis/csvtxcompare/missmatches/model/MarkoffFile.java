@@ -10,9 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -25,7 +29,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Data
 @AllArgsConstructor
-public class MarkoffFile {
+public abstract class MarkoffFile {
 
 	@Id
 	@GeneratedValue(generator = "system-uuid")
@@ -35,8 +39,17 @@ public class MarkoffFile {
 	@Column(nullable = false, updatable = false)
 	private Integer totalRecords;
 
+	@Column(nullable = false, updatable = false)
+	private String fileName;
+
+	@Column(nullable = false, updatable = false)
+	private Long fileSize;
+
 	@OneToMany(mappedBy = "markoffFile", fetch = FetchType.EAGER)
-	private List<MismatchedRecord> mismatches;
+	private List<MarkoffRecord> mismatches;
+
+	@Transient
+	private List<MarkoffRecord> records;
 
 	/**
 	 * Default constructor
@@ -44,5 +57,33 @@ public class MarkoffFile {
 	public MarkoffFile() {
 
 	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this)
+				.append("fileName", this.getFileName())
+				.append("fileSize", this.getFileSize())
+				.append("totalRecords", this.getTotalRecords())
+				.append("mismatches", this.getMismatches())
+				.toString();
+	}
+
+	/**
+	 * Set the records count before persisting since the original records will be discarded
+	 */
+	@PrePersist
+	public void prePersist() {
+		if (CollectionUtils.isNotEmpty(this.getRecords())) {
+			this.setTotalRecords(this.getRecords().size());
+			this.setRecords(null);
+		}
+		else {
+			this.setTotalRecords(0);
+		}
+	}
+
+	public abstract void setMarkoffFilesComparison(MarkoffFilesComparison comparison);
+
+	public abstract MarkoffFilesComparison getMarkoffFilesComparison();
 
 }

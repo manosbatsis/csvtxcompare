@@ -2,13 +2,11 @@ package com.github.manosbatsis.csvtxcompare.missmatches.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import com.github.manosbatsis.csvtxcompare.missmatches.Util;
 import com.github.manosbatsis.csvtxcompare.missmatches.model.ClientMarkoffFile;
 import com.github.manosbatsis.csvtxcompare.missmatches.model.MarkoffFile;
 import com.github.manosbatsis.csvtxcompare.missmatches.model.MarkoffFilesComparison;
-import com.github.manosbatsis.csvtxcompare.missmatches.model.MismatchedRecord;
+import com.github.manosbatsis.csvtxcompare.missmatches.model.MarkoffRecord;
 import com.github.manosbatsis.csvtxcompare.missmatches.model.TutukaMarkoffFile;
 import com.github.manosbatsis.csvtxcompare.missmatches.repository.ClientMarkoffFileRepository;
 import com.github.manosbatsis.csvtxcompare.missmatches.repository.MarkoffFilesComparisonRepository;
@@ -44,56 +42,74 @@ public class MarkoffFilesComparisonService {
 	private MismatchedRecordRepository mismatchedRecordRepository;
 
 
+	/**
+	 * Create and persist a markoff files comparison using the given files.
+	 * The persistence logic seems a bit verbose but we prefer this
+	 * approach VS using cascades with JPA.
+	 *
+	 * @param clientMarkoff
+	 * @param tutukaMarkoff
+	 * @return
+	 */
 	@Transactional(readOnly = false)
-	public MarkoffFilesComparison save(List<Map<String, String>> clientMaps, List<Map<String, String>> tutukaMaps) {
+	public MarkoffFilesComparison save(ClientMarkoffFile clientMarkoff, TutukaMarkoffFile tutukaMarkoff) {
 
-		// Create the list of mismatches per markoff by excluding the intersection of
-		// the originals above. Note: contrary to List.removeAll, the lines bellow respect cardinality
-		// TODO: doing this manually VS two irrelevant ListUtils calls can improve performance somewhat
-		List<Map<String, String>> clientMismatchMaps = ListUtils.subtract(clientMaps, tutukaMaps);
-		List<Map<String, String>> tutukaMismatchMaps = ListUtils.subtract(tutukaMaps, clientMaps);
-
-		// Create the main comparison entity
+		// Add the main comparison entity to the transaction
 		MarkoffFilesComparison markoffFilesComparison = this.repository.save(new MarkoffFilesComparison());
 
-		// Create the client markoff child
-		ClientMarkoffFile clientMarkoffFile = ClientMarkoffFile.builder()
-				.markoffFilesComparison(markoffFilesComparison)
-				.totalRecords(clientMaps.size()).build();
-		// Persist the client markoff child
-		clientMarkoffFile = this.clientMarkoffFileRepository.save(clientMarkoffFile);
-		markoffFilesComparison.setClientMarkoff(clientMarkoffFile);
-		// Save client mismatched records and add to returned object
-		clientMarkoffFile.setMismatches(saveMismatchedRecords(clientMismatchMaps, clientMarkoffFile));
+		// note the original markoff records as they are transient
+		// and will be discarded
+		List<MarkoffRecord> clientRecords = clientMarkoff.getRecords();
+		List<MarkoffRecord> tutukaRecords = tutukaMarkoff.getRecords();
+		log.debug("saved clientRecords: {}", clientRecords);
+		log.debug("saved tutukaRecords: {}", tutukaRecords);
 
-		// Create the tutuka markoff child
-		TutukaMarkoffFile tutukaMarkoffFile = TutukaMarkoffFile.builder()
-				.markoffFilesComparison(markoffFilesComparison)
-				.totalRecords(tutukaMaps.size()).build();
-		// Persist the tutuka markoff child
-		tutukaMarkoffFile = this.tutukaMarkoffFileRepository.save(tutukaMarkoffFile);
-		markoffFilesComparison.setTutukaMarkoff(tutukaMarkoffFile);
-		// Save tutuka mismatched records and add to returned object
-		tutukaMarkoffFile.setMismatches(saveMismatchedRecords(tutukaMismatchMaps, tutukaMarkoffFile));
+		// Add the client markoff file to the transaction
+		clientMarkoff.setMarkoffFilesComparison(markoffFilesComparison);
+		clientMarkoff = this.clientMarkoffFileRepository.save(clientMarkoff);
+		markoffFilesComparison.setClientMarkoff(clientMarkoff);
 
+		// Add the tutuka markoff file to the transaction
+		tutukaMarkoff.setMarkoffFilesComparison(markoffFilesComparison);
+		tutukaMarkoff = this.tutukaMarkoffFileRepository.save(tutukaMarkoff);
+		markoffFilesComparison.setTutukaMarkoff(tutukaMarkoff);
+
+		// Create the list of mismatched records per markoff by excluding
+		// the intersection of the original record lists.
+		// Note: contrary to List.removeAll, the lines bellow respect cardinality
+		// TODO: doing this manually VS two irrelevant ListUtils calls can improve performance somewhat
+		log.debug("saved clientRecords1: {}", clientRecords);
+		log.debug("saved tutukaRecords1: {}", tutukaRecords);
+		List<MarkoffRecord> clientMismatchMaps = ListUtils.subtract(clientRecords, tutukaRecords);
+		List<MarkoffRecord> tutukaMismatchMaps = ListUtils.subtract(tutukaRecords, clientRecords);
+		log.debug("saved clientMismatchMaps: {}", clientMismatchMaps);
+		log.debug("saved tutukaMismatchMaps: {}", tutukaMismatchMaps);
+
+		// convert to and set mismatch records per markoff
+		this.saveMismatchedRecords(clientMismatchMaps, clientMarkoff);
+		this.saveMismatchedRecords(tutukaMismatchMaps, tutukaMarkoff);
+
+		log.debug("saved clientMarkoff: {}", clientMarkoff);
+		log.debug("saved tutukaMarkoff: {}", tutukaMarkoff);
+
+		// return the persisted comparison
 		return markoffFilesComparison;
 	}
 
 	/**
 	 * Persist the given mismatched records
-	 * @param mismatchMaps given as a lisat of maps
-	 * @param clientMarkoffFile the markoff file the maps belong to
+	 * @param mismatchedRecords given as a lisat of maps
+	 * @param markoffFile the markoff file the maps belong to
 	 */
 	@Transactional(readOnly = false)
-	public List<MismatchedRecord> saveMismatchedRecords(List<Map<String, String>> mismatchMaps, MarkoffFile clientMarkoffFile) {
-		List<MismatchedRecord> clientMismatchRecords = Util.toMismatchRecords(mismatchMaps, clientMarkoffFile);
-		List<MismatchedRecord> saved = new ArrayList<>(clientMismatchRecords.size());
-		for (MismatchedRecord record : clientMismatchRecords) {
-			record.setMarkoffFile(clientMarkoffFile);
+	public void saveMismatchedRecords(List<MarkoffRecord> mismatchedRecords, MarkoffFile markoffFile) {
+		log.debug("saveMismatchedRecords, clientMismatchRecords: {}", mismatchedRecords);
+		List<MarkoffRecord> saved = new ArrayList<>(mismatchedRecords.size());
+		for (MarkoffRecord record : mismatchedRecords) {
 			log.debug("saveMismatchedRecords, record: {}", record);
 			saved.add(this.mismatchedRecordRepository.save(record));
 		}
-		return saved;
+		markoffFile.setMismatches(saved);
 	}
 
 }

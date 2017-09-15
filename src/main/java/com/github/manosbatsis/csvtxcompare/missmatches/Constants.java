@@ -21,6 +21,6 @@ public class Constants {
 
 
 	/** Used for controller request mapping */
-	public static final String REQUEST_MAPPING_MISMATCHES = "mismatches";
+	public static final String REQUEST_MAPPING_MISMATCHES = "api/rest/mismatches";
 
 }

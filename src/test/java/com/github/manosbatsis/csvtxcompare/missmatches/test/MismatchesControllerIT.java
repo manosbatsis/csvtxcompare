@@ -22,11 +22,25 @@ package com.github.manosbatsis.csvtxcompare.missmatches.test;
 
 import static io.restassured.RestAssured.given;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.github.manosbatsis.csvtxcompare.missmatches.Constants;
+import com.github.manosbatsis.csvtxcompare.missmatches.model.ClientMarkoffFile;
+import com.github.manosbatsis.csvtxcompare.missmatches.model.MarkoffFilesComparison;
+import com.github.manosbatsis.csvtxcompare.missmatches.model.TutukaMarkoffFile;
 import io.restassured.RestAssured;
 import io.restassured.builder.MultiPartSpecBuilder;
+import io.restassured.config.ObjectMapperConfig;
+import io.restassured.config.RestAssuredConfig;
+import io.restassured.mapper.factory.Jackson2ObjectMapperFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
+import org.junit.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -41,16 +55,19 @@ public class MismatchesControllerIT {
 	public void setup() {
 
 		// log request/response in errors
-		RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+		//RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 		RestAssured.port = 8080;
-/*
+
 		// configure our object mapper
 		RestAssured.config = RestAssuredConfig.config().objectMapperConfig(
 			// config object mapper
 			new ObjectMapperConfig().jackson2ObjectMapperFactory(new Jackson2ObjectMapperFactory() {
 				@Override
 				public ObjectMapper create(Class aClass, String s) {
-					ObjectMapper objectMapper = new ObjectMapper();
+					ObjectMapper objectMapper = new ObjectMapper()
+							.registerModule(new ParameterNamesModule())
+							.registerModule(new Jdk8Module())
+							.registerModule(new JavaTimeModule());
 
 					// Disable features
 					objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -64,7 +81,7 @@ public class MismatchesControllerIT {
 					return objectMapper;
 				}
 			}));
-			*/
+
 	}
 
 
@@ -76,9 +93,10 @@ public class MismatchesControllerIT {
 		String file2 = "TutukaMarkoffFile20140113.csv";
 		final byte[] bytes1 = IOUtils.toByteArray(getClass().getResourceAsStream("/" + file1));
 		final byte[] bytes2 = IOUtils.toByteArray(getClass().getResourceAsStream("/" + file2));
+		MarkoffFilesComparison c = new MarkoffFilesComparison();
 
-		// POST via multipart request
-		given()
+		// POST via multipart request, test for HTTP 200
+		MarkoffFilesComparison comparison = given()
 				.contentType(Constants.MULTIPART_FORM_DATA)
 				.multiPart(new MultiPartSpecBuilder(bytes1)
 						.fileName(file1)
@@ -90,7 +108,18 @@ public class MismatchesControllerIT {
 						.mimeType(TEXT_CSV).build())
 				.when().post(Constants.REQUEST_MAPPING_MISMATCHES)
 				.then()
-				.statusCode(200);//.extract().as(MarkoffFilesComparison.class);
+				.statusCode(200).extract().as(MarkoffFilesComparison.class);
+
+		// assume the sample files have 306/18 and 305/17 records/mismatches
+		// for the client and tutuka markoffs respectivel
+		ClientMarkoffFile clientMarkoff = comparison.getClientMarkoff();
+		TutukaMarkoffFile tutukaMarkoff = comparison.getTutukaMarkoff();
+
+		Assert.assertEquals(306, clientMarkoff.getTotalRecords().intValue());
+		Assert.assertEquals(18, clientMarkoff.getMismatches().size());
+		Assert.assertEquals(305, tutukaMarkoff.getTotalRecords().intValue());
+		Assert.assertEquals(17, tutukaMarkoff.getMismatches().size());
+
 
 	}
 

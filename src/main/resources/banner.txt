@@ -5,6 +5,6 @@ ${AnsiColor.BRIGHT_BLUE}        | | | | | __| | | | |/ / _` |
 ${AnsiColor.BRIGHT_BLUE}        | | |_| | |_| |_| |   < (_| |
 ${AnsiColor.BRIGHT_BLUE}        |_|\__,_|\__|\__,_|_|\_\__,_|
 ${AnsiColor.BRIGHT_BLUE}
-${AnsiColor.BRIGHT_BLUE}     CSV Compare v@project.version@, see https://www.tutuka.com
+${AnsiColor.BRIGHT_BLUE}     CSV Markoff Compare version @project.version@
 ${AnsiColor.BRIGHT_BLUE}     Swagger UI, see http://localhost:8080/swagger-ui.html
 ${AnsiColor.BRIGHT_BLUE}     H2 Console, see http://localhost:8080/h2-console

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.github.manosbatsis.csvtxcompare.missmatches.model.MarkoffFile;
-import com.github.manosbatsis.csvtxcompare.missmatches.model.MismatchedRecord;
+import com.github.manosbatsis.csvtxcompare.missmatches.model.MarkoffRecord;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -19,7 +19,7 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * Various project utilities.
+ * Various project utilities including conversion and mismatch recovery methods.
  *
  * Created by manos on 12/9/2017.
  */
@@ -27,13 +27,35 @@ import org.springframework.web.multipart.MultipartFile;
 public class Util {
 
 	/**
+	 * Uses the data of the given HTTP request (multi) part to fill-in
+	 * the given markoff file instance records.
+	 *
+	 * @param part the part of the request being the given CSV file
+	 * @param markoff the instance to convert the part to
+	 * @param <T> the markoff file class. Mostly used because generic parameters have no build-in support for constructing an instance
+	 * @return the filled instance
+	 */
+	public static <T extends MarkoffFile> T partToMarkoffFile(MultipartFile part, T markoff) {
+
+		// Parse CSV records and convert to a list of maps
+		List<MarkoffRecord> maps = Util.toMarkoffRecords(part);
+
+		// fill the markoff file instance
+		markoff.setFileName(part.getOriginalFilename());
+		markoff.setFileSize(part.getSize());
+		markoff.setRecords(maps);
+
+		return markoff;
+	}
+
+	/**
 	 * Returns the CSV records of the given document as a {@link List} of {@link Map} instances.
 	 * Allows duplicate records in case they are useful as close (mis)matches
 	 * @param markoffFile the given CSV document
 	 * @return the CSV records as a {@link List} of {@link Map}s
 	 */
-	public static List<Map<String, String>> csvToMaps(MultipartFile markoffFile) {
-		List<Map<String, String>> maps;
+	public static List<MarkoffRecord> toMarkoffRecords(MultipartFile markoffFile) {
+		List<MarkoffRecord> maps;
 		BufferedReader in = null;
 		try {
 			// create a buffered reader for the CSV doc
@@ -47,10 +69,35 @@ public class Util {
 
 			// convert records to a serializable map collection
 			maps = new ArrayList<>(records.size());
+
+
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			for (CSVRecord record : records) {
 
-				// convert to map and add
-				maps.add(record.toMap());
+				// Get tx date if any
+				String sTransactionDate = record.get(MarkoffRecord.TRANSACTION_DATE);
+				Date transactionDate = sTransactionDate != null ? format.parse(sTransactionDate) : null;
+
+				// Get tx amount if any
+				String sTransactionAmount = record.get(MarkoffRecord.TRANSACTION_AMOUNT);
+				BigDecimal TransactionAmount = sTransactionAmount != null
+						? new BigDecimal(sTransactionAmount) : null;
+
+				// convert to markof record
+				MarkoffRecord markoffRecord = MarkoffRecord.builder()
+						.recordComment(record.getComment())
+						.recordNumber(record.getRecordNumber())
+						.profileName(record.get(MarkoffRecord.PROFILE_NAME))
+						.transactionDate(transactionDate)
+						.transactionAmount(TransactionAmount)
+						.transactionNarrative(record.get(MarkoffRecord.TRANSACTION_NARRATIVE))
+						.transactionDescription(record.get(MarkoffRecord.TRANSACTION_DESCRIPTION))
+						.transactionID(record.get(MarkoffRecord.TRANSACTION_ID))
+						.transactionType(record.get(MarkoffRecord.TRANSACTION_TYPE))
+						.walletReference(record.get(MarkoffRecord.WALLET_REFERENCE))
+						.build();
+				// add map
+				maps.add(markoffRecord);
 			}
 		}
 		catch (Exception e) {
@@ -62,50 +109,5 @@ public class Util {
 		}
 
 		return maps;
-	}
-
-
-	/**
-	 * Convert the given {@link Map}s to {@link MismatchedRecord} instances
-	 */
-	public static List<MismatchedRecord> toMismatchRecords(List<Map<String, String>> clientMismatchMaps,
-			MarkoffFile markoffFile) {
-		List<MismatchedRecord> mismatchedRecords = new ArrayList<>(clientMismatchMaps.size());
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		//                                                2014-01-11 22:27:44
-		try {
-			// Convert manually for best performance
-			for (Map<String, String> map : clientMismatchMaps) {
-
-				// Get tx date if any
-				String sTransactionDate = map.get("TransactionDate");
-				Date transactionDate = sTransactionDate != null ? format.parse(sTransactionDate) : null;
-
-				// Get tx amount if any
-				String sTransactionAmount = map.get("TransactionDate");
-				BigDecimal TransactionAmount = sTransactionAmount != null
-						? BigDecimal.valueOf(Long.parseLong(map.get("TransactionAmount"))) : null;
-
-				// Build mismatch record
-				MismatchedRecord mismatch = MismatchedRecord.builder()
-						.profileName(map.get("ProfileName"))
-						.transactionDate(transactionDate)
-						.transactionAmount(TransactionAmount)
-						.transactionNarrative(map.get("TransactionNarrative"))
-						.transactionDescription(map.get("TransactionDescription"))
-						.transactionID(map.get("TransactionID"))
-						.transactionType(map.get("TransactionType"))
-						.walletReference(map.get("WalletReference"))
-						.markoffFile(markoffFile)
-						.build();
-				// Add record
-				mismatchedRecords.add(mismatch);
-				log.debug("save, converted map: {} to mismatch: {}", map, mismatch);
-			}
-		}
-		catch (Exception e) {
-			throw new RuntimeException("Failed to convert mismatch record", e);
-		}
-		return mismatchedRecords;
 	}
 }

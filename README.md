@@ -18,7 +18,7 @@ Implementation of trial project for CSV transaction markoff files comparison
 
 <!-- /TOC -->
 
-## Notes On...
+## Notes
 
 This section includes some informative items regarding the codebase.
 
@@ -26,7 +26,7 @@ This section includes some informative items regarding the codebase.
 
 - Comma is assumed to be the field delimiter
 - Record ordering is irrelevant
-- Date strings are given as `yyyy-MM-dd HH:mm:ss`
+- Date strings, when present, are always given as `yyyy-MM-dd HH:mm:ss`
 - Field values are already normalized/regular as string representations of their typed values
 - Non-unique records may exist, those are allowed in case they are useful as close (mis)matches
 - All possible matches of exceptions should be evaluated and scored according to used-defined criteria
@@ -105,6 +105,6 @@ embedded H2 console. In the login screen, just leave everything as-is and submit
 <img src="src/main/resources/img/h2-console.png">
 
 
-## UI Screenshots
+## Walkthrough
 
-TBA
+This section walks you provides a UI and source walkthrough, showing screenshots and explaining the code for each use-case.
