@@ -7,6 +7,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function () {
+
+  this.route('comparisons', function () {
+    this.route('comparison', {path: ':comparison_id'}, function () {
+    });
+  });
 });
 
 export default Router;

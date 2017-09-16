@@ -1,36 +1,36 @@
 import Ember from "ember";
 
 export default Ember.Route.extend({
-
+  store: Ember.inject.service(),
   actions: {
     createPost: function () {
+      const _this = this;
       var fd = new FormData(document.getElementById("fileinfo"));
-      Ember.$('#clientMarkoffFile').val(''); //reset fileinput field
-      Ember.$('#tutukaMarkoffFile').val(''); //reset fileinput field
+      //Ember.$('#clientMarkoffFile').val(''); //reset fileinput field
+      //Ember.$('#tutukaMarkoffFile').val(''); //reset fileinput field
 
       Ember.$.ajax({
-        url: "http://localhost:8080/api/rest/mismatches",
+        url: "/api/rest/comparisons",
         type: "POST",
+        dataType: 'json',
         data: fd,
         processData: false,  // tell jQuery not to process the data
         contentType: false,   // tell jQuery not to set contentType
-        // in case of an error exception in the backend,
-        // handle the JSON returned to display relevant info
-        error: function (jqXHR, textStatus, errorThrown) {
-          // route to error display
-          // TODO
-          console.log("error: " + jqXHR.responseText);
-
-        },
-        // in case of successhandle the JSON returned
+      }).done(function (data, textStatus, jqXHR) {
+        // response is a JSON object, previously parsed by jQuery using $.parseJSON
+        console.log("done with status/data: ", textStatus, data);
+        // in case of success the JSON returned
         // to display mismatches
-        success: function (data, textStatus, jqXHR) {
-          // route to error display
-          // TODO
-          console.log("success: " + jqXHR.responseText);
-
-        },
+        const model =
+          _this.get('store').createRecord('comparison', data);
+        console.log("application, model: ", model);
+        _this.set("model", model);
+        _this.transitionTo(
+          'comparisons.comparison', model);
+        // TODO: in case of an error exception in the backend,
+        // handle the JSON returned to display relevant info
       });
     }
   }
+
 });

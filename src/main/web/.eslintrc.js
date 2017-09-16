@@ -1,4 +1,7 @@
 module.exports = {
+  globals: {
+    server: true,
+  },
   root: true,
   parserOptions: {
     ecmaVersion: 2017,
@@ -6,7 +9,10 @@ module.exports = {
   },
   extends: 'eslint:recommended',
   env: {
-    browser: true
+    browser: true,
   },
-  rules: {}
+  rules: {
+    "no-unused-vars": 0,
+    "no-console": 0,
+  }
 };
