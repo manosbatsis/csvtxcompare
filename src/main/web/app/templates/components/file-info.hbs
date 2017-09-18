@@ -1,25 +1,23 @@
-  <div class="card">
-    <div class="card-header">
-      {{model.fileName}}
-    </div>
-    <div class="card-block">
-      <ul class="list-group">
-        <li class="list-group-item justify-content-between">
-          Total records
-          <span class="badge badge-secondary">{{model.totalRecordsCount}}</span>
-        </li>
-        <li class="list-group-item justify-content-between">
-          Matching records
-          <span class="badge badge-secondary">{{model.matchedRecordsCount}}</span>
-        </li>
-        <li class="list-group-item justify-content-between">
-          Unmatched records
-          <span class="badge badge-secondary">{{model.mismatchedRecordsCount}}</span>
-        </li>
-      </ul>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Filesize: {{model.fileSize}}</small>
-    </div>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{model.fileName}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">File size: {{model.fileSize}} bytes</h6>
   </div>
+  <div class="card-block">
+    <ul class="list-group">
+      <li class="list-group-item justify-content-between">
+        Total records
+        <span class="badge badge-secondary">{{model.totalRecordsCount}}</span>
+      </li>
+      <li class="list-group-item justify-content-between">
+        Matching records
+        <span class="badge badge-secondary">{{model.matchedRecordsCount}}</span>
+      </li>
+      <li class="list-group-item justify-content-between">
+        Unmatched records
+        <span class="badge badge-secondary">{{model.mismatchedRecordsCount}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
 

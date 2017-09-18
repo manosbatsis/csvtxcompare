@@ -17,12 +17,17 @@ define('webapp/tests/app.lint-test', [], function () {
 
   QUnit.test('models/comparison.js', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'models/comparison.js should pass ESLint\n\n');
+    assert.ok(false, 'models/comparison.js should pass ESLint\n\n23:16 - \'Ember\' is not defined. (no-undef)\n46:19 - \'Ember\' is not defined. (no-undef)\n59:5 - \'$\' is not defined. (no-undef)\n62:7 - \'$\' is not defined. (no-undef)\n65:9 - \'$\' is not defined. (no-undef)');
   });
 
   QUnit.test('models/markoff-file.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'models/markoff-file.js should pass ESLint\n\n');
+  });
+
+  QUnit.test('models/markoff-record.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'models/markoff-record.js should pass ESLint\n\n');
   });
 
   QUnit.test('resolver.js', function (assert) {
@@ -48,6 +53,11 @@ define('webapp/tests/app.lint-test', [], function () {
   QUnit.test('routes/comparisons/comparison/index.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'routes/comparisons/comparison/index.js should pass ESLint\n\n');
+  });
+
+  QUnit.test('routes/comparisons/comparison/report.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'routes/comparisons/comparison/report.js should pass ESLint\n\n');
   });
 });
 define("webapp/tests/helpers/destroy-app", ["exports"], function (exports) {
@@ -223,6 +233,11 @@ define('webapp/tests/tests.lint-test', [], function () {
     assert.expect(1);
     assert.ok(true, 'unit/routes/comparisons/comparison/index-test.js should pass ESLint\n\n');
   });
+
+  QUnit.test('unit/routes/comparisons/comparison/report-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/routes/comparisons/comparison/report-test.js should pass ESLint\n\n');
+  });
 });
 define('webapp/tests/unit/models/comparison-test', ['ember-qunit'], function (_emberQunit) {
   'use strict';
@@ -282,6 +297,19 @@ define('webapp/tests/unit/routes/comparisons/comparison/index-test', ['ember-qun
   'use strict';
 
   (0, _emberQunit.moduleFor)('route:comparisons/comparison/index', 'Unit | Route | comparisons/comparison/index', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+});
+define('webapp/tests/unit/routes/comparisons/comparison/report-test', ['ember-qunit'], function (_emberQunit) {
+  'use strict';
+
+  (0, _emberQunit.moduleFor)('route:comparisons/comparison/report', 'Unit | Route | comparisons/comparison/report', {
     // Specify the other units that are required for this test.
     // needs: ['controller:foo']
   });

@@ -77,7 +77,7 @@ public class MarkoffRecord {
 	private BigDecimal transactionAmount;
 
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(updatable = false)
 	private MarkoffFile markoffFile;
 

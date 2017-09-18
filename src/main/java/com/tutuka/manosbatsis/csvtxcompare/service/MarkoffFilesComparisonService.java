@@ -124,6 +124,7 @@ public class MarkoffFilesComparisonService {
 		log.debug("saveMismatchedRecords, clientMismatchRecords: {}", mismatchedRecords);
 		List<MarkoffRecord> saved = new ArrayList<>(mismatchedRecords.size());
 		for (MarkoffRecord record : mismatchedRecords) {
+			record.setMarkoffFile(markoffFile);
 			log.debug("saveMismatchedRecords, record: {}", record);
 			saved.add(this.mismatchedRecordRepository.save(record));
 		}

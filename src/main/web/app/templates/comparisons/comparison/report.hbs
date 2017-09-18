@@ -1,0 +1,28 @@
+
+<table class="table table-hover table-responsive">
+
+</table>
+
+
+
+<table class="table table-hover table-responsive">
+  <caption style="caption-side: top;">Matching scores between client (vertical)and tutuka (horizontal) records</caption>
+  <thead>
+    <tr>
+      <th>Record #</th>
+      {{#each model.tutukaMarkoff.mismatches as |tutukaMismatch|}}
+        <th>{{tutukaMismatch.recordNumber}}</th>
+      {{/each}}
+    </tr>
+  </thead>
+  <tbody style="text-align: right">
+    {{#each model.matchingScores as | rowScores clientIndex|}}
+    <tr>
+      <th>{{rowScores.[0].clientRecordRecordNumber}}</th>
+      {{#each rowScores as | score tutukaIndex|}}
+        <td style="background-color: rgba(51, 153, 102, {{mult score.score 0.1}});">{{score.score}}</td>
+      {{/each}}
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

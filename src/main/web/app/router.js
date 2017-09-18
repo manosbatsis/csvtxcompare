@@ -10,6 +10,7 @@ Router.map(function () {
 
   this.route('comparisons', function () {
     this.route('comparison', {path: ':comparison_id'}, function () {
+      this.route('report');
     });
   });
 });
