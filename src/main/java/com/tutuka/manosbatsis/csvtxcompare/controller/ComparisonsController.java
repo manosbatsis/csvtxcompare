@@ -9,12 +9,14 @@ import com.tutuka.manosbatsis.csvtxcompare.model.dto.ErrorModel;
 import com.tutuka.manosbatsis.csvtxcompare.service.MarkoffFilesComparisonService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -71,8 +73,9 @@ public class ComparisonsController {
 	// Endpoint methods
 	// ----------------------
 	@ApiOperation(value = "Find a markoff files comparison by ID", notes = API_DESC_FIND_ONE)
-	@RequestMapping(method = {RequestMethod.GET})
-	public MarkoffFilesComparison findOne(@RequestParam(name = "id", required = true) String id) {
+	@RequestMapping(value = "{id}", method = {RequestMethod.GET})
+	public MarkoffFilesComparison findOne(
+			@ApiParam(name = "id", required = true, value = "string") @PathVariable String id) {
 		return this.service.findOne(id);
 	}
 

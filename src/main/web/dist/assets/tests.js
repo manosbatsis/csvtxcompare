@@ -252,8 +252,8 @@ define("webapp/tests/integration/components/file-info-test", ["ember-qunit"], fu
     assert.equal(this.$().text().trim(), 'template block text');
   });
 });
-define('webapp/tests/integration/components/suggestions-table-test', ['ember-qunit'], function (_emberQunit) {
-  'use strict';
+define("webapp/tests/integration/components/suggestions-table-test", ["ember-qunit"], function (_emberQunit) {
+  "use strict";
 
   (0, _emberQunit.moduleForComponent)('suggestions-table', 'Integration | Component | suggestions table', {
     integration: true
