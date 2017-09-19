@@ -4,7 +4,10 @@ Implementation of trial project for CSV transaction markoff files comparison
 
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [Notes On...](#notes-on)
+- [Screen Shots](#screen-shots)
+	- [Complete with Suggestions Report](#complete-with-suggestions-report)
+	- [Additional Scores Report](#additional-scores-report)
+- [Notes](#notes)
 	- [Assumptions](#assumptions)
 	- [Architecture](#architecture)
 		- [Frontend](#frontend)
@@ -14,9 +17,22 @@ Implementation of trial project for CSV transaction markoff files comparison
 	- [Testing](#testing)
 	- [REST API Documentation](#rest-api-documentation)
 	- [Database Console](#database-console)
-- [UI Screenshots](#ui-screenshots)
 
 <!-- /TOC -->
+
+## Screen Shots
+
+This section provides UI deliverable screenshots.
+
+### Complete with Suggestions Report
+
+<img src="src/main/resources/img/ui-complete.png">
+
+### Additional Scores Report
+
+An additional report is accessible by a tab in the report section. The scores report demonstrates the scoring of suggested results as that results from field-by-field comparisons bewteen markoff records.
+
+<img src="src/main/resources/img/ui-scores.png">
 
 ## Notes
 
@@ -31,7 +47,7 @@ This section includes some informative items regarding the codebase.
 - Non-unique records may exist, those are allowed in case they are useful as close (mis)matches
 - All possible matches are calculated by comparing records field-by-field for plain equality. The only exception is the record number, as that allows some points within a threshold relevant to any unbalanced records in either side.
 - Close matches are avaluated field-by-field, the code does not try to recover misplaced values
-- The (integration) tests assume the sample files have 306/18 and 305/17 records/mismatches for the client and tutuka markoffs respectively. The files are in [src/main/resources/static](src/main/resources/static) 
+- The (integration) tests assume the sample files have 306/18 and 305/17 records/mismatches for the client and tutuka markoffs respectively. The files are in [src/main/resources/static](src/main/resources/static)
 
 ### Architecture
 
@@ -41,13 +57,13 @@ The font-end is a simple ember-based SPA, loosely following the mockup. The SPA 
 markoffs are given the x and y axis respectively. The table cells show the overall match score between the records and
 provide a tooltip for visual comparison (pending)
 
-The client UI project can be found in [src/main/web](src/mainweb). The build is mainly based on NPM. Main components: 
+The client UI project can be found in [src/main/web](src/mainweb). The build is mainly based on NPM. Main components:
 
-- [src/main/web/app/models/comparison.js](src/main/web/app/models/comparison.js) the leading entity model, also features computed properties used for cclose match suggestions 
+- [src/main/web/app/models/comparison.js](src/main/web/app/models/comparison.js) the leading entity model, also features computed properties used for cclose match suggestions
 - [src/main/web/app/components](src/main/web/app/components) UI components providinge the main UI widjets
 - [src/main/web/app/templates](src/main/web/app/templates) handlebars templates
 
-The client UI's dist folder is included in the Spring app for it to serve the corresponding resources. 
+The client UI's dist folder is included in the Spring app for it to serve the corresponding resources.
 
 #### Backend
 
@@ -55,9 +71,9 @@ The project is a vanilla 3 tier (Controller, Service, Repository), RESTful Sprin
 libs. An embedded, in-memory H2 database is used for convenience and can be replaced by any other mainstream RDBMS without
 code changes.
 
-The main components are: 
+The main components are:
 
-- [ComparisonsController](src/main/java/com/tutuka/manosbatsis/csvtxcompare/controller/ComparisonsController.java) provides a RESTful API to extract, persist and query markoff file comparisons. In case of any error, an ErrorModel object is provided as the JSON response. Documentation on the relevant endpoints is available in the [REST API Documentation](#rest-api-documentation) 
+- [ComparisonsController](src/main/java/com/tutuka/manosbatsis/csvtxcompare/controller/ComparisonsController.java) provides a RESTful API to extract, persist and query markoff file comparisons. In case of any error, an ErrorModel object is provided as the JSON response. Documentation on the relevant endpoints is available in the [REST API Documentation](#rest-api-documentation)
 - [MarkoffFilesComparisonService](src/main/java/com/tutuka/manosbatsis/csvtxcompare/service/MarkoffFilesComparisonService.java) is the business component for persisting and quering the relevant data models
 - [Util](src/main/java/com/tutuka/manosbatsis/csvtxcompare/Util.java) is a utility class used for type conversion and mismatch discovery
 
@@ -116,8 +132,3 @@ To review the database run the application and browse to
 embedded H2 console. In the login screen, just leave everything as-is and submit:
 
 <img src="src/main/resources/img/h2-console.png">
-
-
-## Walkthrough
-
-This section walks you provides a UI and source walkthrough, showing screenshots and explaining the code for each use-case.

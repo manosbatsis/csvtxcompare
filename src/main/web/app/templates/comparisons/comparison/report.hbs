@@ -1,41 +1,55 @@
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-expanded="true">Suggestions</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="scores-tab" data-toggle="tab" href="#scores" role="tab" aria-controls="scores">Scores</a>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
+<br>
 
-  {{suggestions-table model=model }}
+<div class="card w-75">
+  <div class="card-body">
+    <h4 class="card-title">Reports</h4>
+    <p class="card-text">Bellow you can find the suggestions and scoring report for the uploaded markoffs..</p>
 
-  </div>
-  <div class="tab-pane fade" id="scores" role="tabpanel" aria-labelledby="scores-tab">
-    <table class="table table-hover table-responsive">
-      <caption style="caption-side: top;">Matching scores between client (vertical)and tutuka (horizontal) records</caption>
-      <thead>
-        <tr>
-          <th>Record #</th>
-          {{#each model.tutukaMarkoff.mismatches as |tutukaMismatch|}}
-            <th>{{tutukaMismatch.recordNumber}}</th>
-          {{/each}}
-        </tr>
-      </thead>
-      <tbody style="text-align: right">
-        {{#each model.matchingScores as | rowScores clientIndex|}}
-        <tr>
-          <th>{{rowScores.[0].clientRecordNumber}}</th>
-          {{#each rowScores as | score tutukaIndex|}}
-            <td style="background-color: rgba(51, 153, 102, {{mult score.score 0.1}});">{{score.score}}</td>
-          {{/each}}
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+    <br>
+    <ul class="nav nav-pills" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="suggestions-tab" data-toggle="tab" href="#suggestions" role="tab" aria-controls="suggestions" aria-expanded="true">Suggestions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="scores-tab" data-toggle="tab" href="#scores" role="tab" aria-controls="scores">Scores</a>
+      </li>
+    </ul>
+    <br>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
+
+      {{suggestions-table model=model }}
+
+      </div>
+      <div class="tab-pane fade" id="scores" role="tabpanel" aria-labelledby="scores-tab">
+
+        <table class="table table-hover table-responsive">
+          <caption style="caption-side: top;">Matching scores between client (vertical)and tutuka (horizontal) records</caption>
+          <thead>
+            <tr>
+              <th>Record #</th>
+              {{#each model.tutukaMarkoff.mismatches as |tutukaMismatch|}}
+                <th>{{tutukaMismatch.recordNumber}}</th>
+              {{/each}}
+            </tr>
+          </thead>
+          <tbody style="text-align: right">
+            {{#each model.matchingScores as | rowScores clientIndex|}}
+            <tr>
+              <th>{{rowScores.[0].clientRecordNumber}}</th>
+              {{#each rowScores as | score tutukaIndex|}}
+                <td style="background-color: rgba(51, 153, 102, {{mult score.score 0.1}});">{{score.score}}</td>
+              {{/each}}
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
+
+
 
 
 

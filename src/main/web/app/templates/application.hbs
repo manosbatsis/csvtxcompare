@@ -1,3 +1,32 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+  <div class="container">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Tutuka Markoff Compare</a>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/swagger-ui.html">REST API</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/h2-console">H2 Console</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/manosbatsis/csvtxcompare#csv-transaction-files-comparison-">Documentation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://travis-ci.org/manosbatsis/csvtxcompare">Travis CI</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <div class="container">
   <div class="card">
@@ -5,6 +34,12 @@
       <h5 class="card-title">Specify files to compare</h5>
     {{!-- submits a client/tutuka markoff files pair --}}
       <form role="form" enctype="multipart/form-data" method="post" id="fileinfo" {{action (route-action 'createPost') on='submit'}}>
+        <p>
+          Select client and tutu7ka markoff files to compare.
+          You can also download and use the sample
+          <a href="/ClientMarkoffFile20140113.csv">client</a> and
+          <a href="/TutukaMarkoffFile20140113.csv">tutuka</a> markoff files.
+        </p>
         <div class="form-group row">
           <label for="clientMarkoffFile" class="col-2 col-form-label">Select client file</label>
           <div class="col-10">
