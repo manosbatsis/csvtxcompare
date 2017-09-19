@@ -8,6 +8,8 @@ Implementation of trial project for CSV transaction markoff files comparison
 	- [Complete with Suggestions Report](#complete-with-suggestions-report)
 	- [Additional Scores Report](#additional-scores-report)
 - [Notes](#notes)
+	- [Effort](#effort)
+	- [Prerequisites](#prerequisites)
 	- [Assumptions](#assumptions)
 	- [Architecture](#architecture)
 		- [Frontend](#frontend)
@@ -37,6 +39,15 @@ An additional report is accessible by a tab in the report section. The scores re
 ## Notes
 
 This section includes some informative items regarding the codebase.
+
+### Effort
+
+This repo took about three man-days to setup in it's current form.
+
+### Prerequisites
+
+- JDK 8 is required to build. Either Oracle or OpenJDK will do just fine, I've used the latter, v1.8.0_131
+- Apache Maven 3.3+ should be fine, I've used 3.3.9
 
 ### Assumptions
 
@@ -104,7 +115,7 @@ mvn clean install spring-boot:run
 
 <img src="src/main/resources/img/cmd-run.png">
 
-4) Browse the app at [http://localhost:8080](http://localhost:8080) (TBA)
+4) Browse the app at [http://localhost:8080](http://localhost:8080)
 
 ### Testing
 
