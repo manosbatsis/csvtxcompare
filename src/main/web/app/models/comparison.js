@@ -57,10 +57,6 @@ export default DS.Model.extend({
       return b.score - a.score;
     });
 
-    Ember.$.each(sortedScores, function( cIndex, sortedScore ) {
-
-      console.log("sortedScores:", sortedScore.score);
-    });
     // suggestions
     var suggestions = [];
 
@@ -105,7 +101,7 @@ export default DS.Model.extend({
 
       }
     }
-    console.log("suggestions:", suggestions);
+
     return suggestions;
 
   }),

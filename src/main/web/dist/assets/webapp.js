@@ -301,7 +301,6 @@ define('webapp/components/suggestions-table', ['exports'], function (exports) {
         // Toggle the visibility
         var column = void 0;
         for (var i = 0; i < dataColumn.length; i++) {
-          console.log("toggling: ", dataColumn[i]);
           column = table.column(dataColumn[i]);
           column.visible(!column.visible());
         }
@@ -2870,10 +2869,6 @@ define("webapp/models/comparison", ["exports", "ember-data"], function (exports,
         return b.score - a.score;
       });
 
-      Ember.$.each(sortedScores, function (cIndex, sortedScore) {
-
-        console.log("sortedScores:", sortedScore.score);
-      });
       // suggestions
       var suggestions = [];
 
@@ -2915,7 +2910,7 @@ define("webapp/models/comparison", ["exports", "ember-data"], function (exports,
             }
         }
       }
-      console.log("suggestions:", suggestions);
+
       return suggestions;
     }),
 
@@ -3113,12 +3108,9 @@ define("webapp/routes/application", ["exports"], function (exports) {
           processData: false, // tell jQuery not to process the data
           contentType: false // tell jQuery not to set contentType
         }).done(function (data, textStatus, jqXHR) {
-          // response is a JSON object, previously parsed by jQuery using $.parseJSON
-          console.log("done with status/data: ", textStatus, data);
           // in case of success the JSON returned
           // to display mismatches
           var model = _this.get('store').createRecord('comparison', data);
-          console.log("application, model: ", model);
           _this.set("model", model);
           _this.transitionTo('comparisons.comparison', model);
           // TODO: in case of an error exception in the backend,
@@ -3315,6 +3307,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("webapp/app")["default"].create({"name":"webapp","version":"0.0.0+1fdfc063"});
+  require("webapp/app")["default"].create({"name":"webapp","version":"0.0.0+af672c52"});
 }
 //# sourceMappingURL=webapp.map

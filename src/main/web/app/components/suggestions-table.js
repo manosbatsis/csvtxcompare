@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Ember from "ember";
 
 
 /**
@@ -44,7 +44,6 @@ export default Ember.Component.extend({
       // Toggle the visibility
       let column;
       for(let i=0; i < dataColumn.length; i++){
-        console.log("toggling: ", dataColumn[i]);
         column = table.column(dataColumn[i]);
         column.visible(!column.visible());
       }
