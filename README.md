@@ -1,4 +1,4 @@
-# CSV transaction files comparison
+# CSV transaction files comparison [![Build Status](https://travis-ci.org/manosbatsis/csvtxcompare.svg?branch=master)](https://travis-ci.org/manosbatsis/csvtxcompare)
 
 Implementation of trial project for CSV transaction markoff files comparison
 
@@ -7,8 +7,8 @@ Implementation of trial project for CSV transaction markoff files comparison
 - [Notes On...](#notes-on)
 	- [Assumptions](#assumptions)
 	- [Architecture](#architecture)
-		- [Backend](#backend)
 		- [Frontend](#frontend)
+		- [Backend](#backend)
 - [HOWTO](#howto)
 	- [Build and Run](#build-and-run)
 	- [Testing](#testing)
@@ -24,16 +24,30 @@ This section includes some informative items regarding the codebase.
 
 ### Assumptions
 
-- Comma is assumed to be the field delimiter
-- Record ordering is irrelevant
+- The mockups are loosely followed in many ways, e.g. bootstrapo cards are used VS HTML fieldsets and an additional report is provided to demonstrate the logic between the suggested matches.
+- Comma is assumed to be the CSV field delimiter
 - Date strings, when present, are always given as `yyyy-MM-dd HH:mm:ss`
 - Field values are already normalized/regular as string representations of their typed values
 - Non-unique records may exist, those are allowed in case they are useful as close (mis)matches
-- All possible matches of exceptions should be evaluated and scored according to used-defined criteria
+- All possible matches are calculated by comparing records field-by-field for plain equality. The only exception is the record number, as that allows some points within a threshold relevant to any unbalanced records in either side.
 - Close matches are avaluated field-by-field, the code does not try to recover misplaced values
-- The (integration) tests assume the sample files have 306/18 and 305/17 records/mismatches for the client and tutuka markoffs respectivel
+- The (integration) tests assume the sample files have 306/18 and 305/17 records/mismatches for the client and tutuka markoffs respectively. The files are in [src/main/resources/static](src/main/resources/static) 
 
 ### Architecture
+
+#### Frontend
+
+The font-end is a simple ember-based SPA, loosely following the mockup. The SPA also adds a comparison table component where client and tutuka
+markoffs are given the x and y axis respectively. The table cells show the overall match score between the records and
+provide a tooltip for visual comparison (pending)
+
+The client UI project can be found in [src/main/web](src/mainweb). The build is mainly based on NPM. Main components: 
+
+- [src/main/web/app/models/comparison.js](src/main/web/app/models/comparison.js) the leading entity model, also features computed properties used for cclose match suggestions 
+- [src/main/web/app/components](src/main/web/app/components) UI components providinge the main UI widjets
+- [src/main/web/app/templates](src/main/web/app/templates) handlebars templates
+
+The client UI's dist folder is included in the Spring app for it to serve the corresponding resources. 
 
 #### Backend
 
@@ -41,13 +55,12 @@ The project is a vanilla 3 tier (Controller, Service, Repository), RESTful Sprin
 libs. An embedded, in-memory H2 database is used for convenience and can be replaced by any other mainstream RDBMS without
 code changes.
 
-This is also the first time I use Spring Boot's default Tomcat as I normally prefer Jetty for performance.
+The main components are: 
 
-#### Frontend
+- [ComparisonsController](src/main/java/com/tutuka/manosbatsis/csvtxcompare/controller/ComparisonsController.java) provides a RESTful API to extract, persist and query markoff file comparisons. In case of any error, an ErrorModel object is provided as the JSON response. Documentation on the relevant endpoints is available in the [REST API Documentation](#rest-api-documentation) 
+- [MarkoffFilesComparisonService](src/main/java/com/tutuka/manosbatsis/csvtxcompare/service/MarkoffFilesComparisonService.java) is the business component for persisting and quering the relevant data models
+- [Util](src/main/java/com/tutuka/manosbatsis/csvtxcompare/Util.java) is a utility class used for type conversion and mismatch discovery
 
-The font-end is a simple SPA following the mockup. The SPA also adds a comparison table component where client and tutuka
-markoffs are given the x and y axis respectively. The table cells show the overall match score between the records and
-provide a tooltip for visual comparison (pending)
 
 ## HOWTO
 
