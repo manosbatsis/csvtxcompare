@@ -1,0 +1,66 @@
+
+  <!-- links to toggle coluimns on/off -->
+  <p>
+    Toggle columns:
+    <a class="toggle-vis" data-column='0,10'>Record</a>,
+    <a class="toggle-vis" data-column='1,11'>Profile</a>,
+    <a class="toggle-vis" data-column='2,12'>Date</a>,
+    <a class="toggle-vis" data-column='3,13'>Amount</a>,
+    <a class="toggle-vis" data-column='4,14'>Narrative</a>,
+    <a class="toggle-vis" data-column='5,15'>Description</a>,
+    <a class="toggle-vis" data-column='6,16'>Id</a>,
+    <a class="toggle-vis" data-column='7,17'>Type</a>,
+    <a class="toggle-vis" data-column='8,18'>Wallet</a>,
+    <a class="toggle-vis" data-column='9'>Score</a>
+  </p>
+
+  <table id="suggestions-table" class='table table-stripped'>
+    <thead>
+      <tr>
+        <th>Client Record</th>
+        <th>Client Profile</th>
+        <th>Client Tx Date</th>
+        <th>Client Tx Amount</th>
+        <th>Client Tx Narrative</th>
+        <th>Client Tx Desc</th>
+        <th>Client Tx Id</th>
+        <th>Client Tx Type</th>
+        <th>Client Wallet</th>
+        <th>Score</th>
+        <th>Tutuka Record</th>
+        <th>Tutuka Profile</th>
+        <th>Tutuka Tx Date</th>
+        <th>Tutuka Tx Amount</th>
+        <th>Tutuka Tx Narrative</th>
+        <th>Tutuka Tx Desc</th>
+        <th>Tutuka Tx Id</th>
+        <th>Tutuka Tx Type</th>
+        <th>Tutuka Wallet</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.suggestions as | row |}}
+        <tr>
+          <td class="text-right">{{row.client_recordNumber}}</td>
+          <td>{{row.client_profileName}}</td>
+          <td>{{row.client_transactionDate}}</td>
+          <td class="text-right">{{row.client_transactionAmount}}</td>
+          <td>{{row.client_transactionNarrative}}</td>
+          <td>{{row.client_transactionDescription}}</td>
+          <td>{{row.client_transactionID}}</td>
+          <td>{{row.client_transactionType}}</td>
+          <td>{{row.client_walletReference}}</td>
+          <td class="text-right">{{row.score}}</td>
+          <td class="text-right">{{row.tutuka_recordNumber}}</td>
+          <td>{{row.tutuka_profileName}}</td>
+          <td>{{row.tutuka_transactionDate}}</td>
+          <td class="text-right">{{row.tutuka_transactionAmount}}</td>
+          <td>{{row.tutuka_transactionNarrative}}</td>
+          <td>{{row.tutuka_transactionDescription}}</td>
+          <td>{{row.tutuka_transactionID}}</td>
+          <td>{{row.tutuka_transactionType}}</td>
+          <td>{{row.tutuka_walletReference}}</td>
+        </tr>
+      {{/each}}
+    <//tbody>
+  </table>

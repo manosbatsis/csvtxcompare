@@ -8,31 +8,9 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="suggestions" role="tabpanel" aria-labelledby="suggestions-tab">
-  {{data-table data=model.suggestions
-    searching=false
-    paging=false
-    ordering=client_recordNumber
-    columns=(array
-       (hash title="Client Record" property="client_recordNumber" visible=false)
-       (hash title="Client Profile" property="client_profileName" visible=false)
-       (hash title="Client Tx Date" property="client_transactionDate")
-       (hash title="Client Tx Amount" property="client_transactionAmount")
-       (hash title="Client Tx Narrative" property="client_transactionNarrative" visible=false)
-       (hash title="Client Tx Desc" property="client_transactionDescription" visible=false)
-       (hash title="Client Tx Id" property="client_transactionID" visible=false)
-       (hash title="Client Tx Type" property="client_transactionType" visible=false)
-       (hash title="Client Wallet" property="client_walletReference")
-       (hash title="Score" property="score")
-       (hash title="Tutuka Record" property="tutuka_recordNumber" visible=false)
-       (hash title="Tutuka Profile" property="tutuka_profileName" visible=false)
-       (hash title="Tutuka Tx Date" property="tutuka_transactionDate")
-       (hash title="Tutuka Tx Amount" property="tutuka_transactionAmount")
-       (hash title="Tutuka Tx Narrative" property="tutuka_transactionNarrative" visible=false)
-       (hash title="Tutuka Tx Desc" property="tutuka_transactionDescription" visible=false)
-       (hash title="Tutuka Tx Id" property="tutuka_transactionID" visible=false)
-       (hash title="Tutuka Tx Type" property="tutuka_transactionType" visible=false)
-       (hash title="Tutuka Wallet" property="tutuka_walletReference")
-     )}}
+
+  {{suggestions-table model=model }}
+
   </div>
   <div class="tab-pane fade" id="scores" role="tabpanel" aria-labelledby="scores-tab">
     <table class="table table-hover table-responsive">
