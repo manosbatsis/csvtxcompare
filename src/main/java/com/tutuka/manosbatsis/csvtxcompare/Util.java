@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -71,15 +70,9 @@ public class Util {
 			// Convert records to a serializable map collection
 			markoffRecords = new ArrayList<>(csvRecords.size());
 
-
 			// Iterate CSV records
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			for (CSVRecord record : csvRecords) {
-
-				// Get tx date if any
-				String sTransactionDate = record.get(MarkoffRecord.TRANSACTION_DATE);
-				Date transactionDate = Objects.isNull(sTransactionDate)
-						? null : format.parse(sTransactionDate);
 
 				// Get tx amount if any
 				String sTransactionAmount = record.get(MarkoffRecord.TRANSACTION_AMOUNT);
@@ -91,7 +84,7 @@ public class Util {
 						.recordComment(record.getComment())
 						.recordNumber(record.getRecordNumber())
 						.profileName(record.get(MarkoffRecord.PROFILE_NAME))
-						.transactionDate(transactionDate)
+						.transactionDate(record.get(MarkoffRecord.TRANSACTION_DATE))
 						.transactionAmount(TransactionAmount)
 						.transactionNarrative(record.get(MarkoffRecord.TRANSACTION_NARRATIVE))
 						.transactionDescription(record.get(MarkoffRecord.TRANSACTION_DESCRIPTION))

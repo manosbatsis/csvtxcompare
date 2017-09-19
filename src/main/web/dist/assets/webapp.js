@@ -24,6 +24,80 @@ define("webapp/app", ["exports", "webapp/resolver", "ember-load-initializers", "
 
   exports.default = App;
 });
+define('webapp/breakpoints', ['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = {
+    mobile: '(max-width: 767px)',
+    tablet: '(min-width: 768px) and (max-width: 991px)',
+    desktop: '(min-width: 992px) and (max-width: 1200px)'
+  };
+});
+define('webapp/components/as-scrollable', ['exports', 'ember-scrollable/components/ember-scrollable'], function (exports, _emberScrollable) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _emberScrollable.default.extend({
+    classNames: 'as-scrollable'
+  });
+});
+define('webapp/components/data-table', ['exports', 'ember-datatables/components/data-table'], function (exports, _dataTable) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _dataTable.default;
+    }
+  });
+});
+define('webapp/components/ember-scrollable', ['exports', 'ember-scrollable/components/ember-scrollable'], function (exports, _emberScrollable) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _emberScrollable.default;
+    }
+  });
+});
+define('webapp/components/ember-scrollbar', ['exports', 'ember-scrollable/components/ember-scrollbar'], function (exports, _emberScrollbar) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _emberScrollbar.default;
+    }
+  });
+});
+define('webapp/components/ember-wormhole', ['exports', 'ember-wormhole/components/ember-wormhole'], function (exports, _emberWormhole) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _emberWormhole.default;
+    }
+  });
+});
 define("webapp/components/file-info", ["exports"], function (exports) {
   "use strict";
 
@@ -31,6 +105,175 @@ define("webapp/components/file-info", ["exports"], function (exports) {
     value: true
   });
   exports.default = Ember.Component.extend({});
+});
+define('webapp/components/light-table', ['exports', 'ember-light-table/components/light-table'], function (exports, _lightTable) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _lightTable.default;
+    }
+  });
+});
+define('webapp/components/light-table/cells/base', ['exports', 'ember-light-table/components/cells/base'], function (exports, _base) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _base.default;
+    }
+  });
+});
+define('webapp/components/light-table/columns/base', ['exports', 'ember-light-table/components/columns/base'], function (exports, _base) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _base.default;
+    }
+  });
+});
+define('webapp/components/lt-body', ['exports', 'ember-light-table/components/lt-body'], function (exports, _ltBody) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _ltBody.default;
+    }
+  });
+});
+define('webapp/components/lt-column-resizer', ['exports', 'ember-light-table/components/lt-column-resizer'], function (exports, _ltColumnResizer) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _ltColumnResizer.default;
+    }
+  });
+});
+define('webapp/components/lt-foot', ['exports', 'ember-light-table/components/lt-foot'], function (exports, _ltFoot) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _ltFoot.default;
+    }
+  });
+});
+define('webapp/components/lt-head', ['exports', 'ember-light-table/components/lt-head'], function (exports, _ltHead) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _ltHead.default;
+    }
+  });
+});
+define('webapp/components/lt-infinity', ['exports', 'ember-light-table/components/lt-infinity'], function (exports, _ltInfinity) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _ltInfinity.default;
+    }
+  });
+});
+define('webapp/components/lt-row', ['exports', 'ember-light-table/components/lt-row'], function (exports, _ltRow) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _ltRow.default;
+    }
+  });
+});
+define('webapp/components/lt-scrollable', ['exports', 'ember-light-table/components/lt-scrollable'], function (exports, _ltScrollable) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _ltScrollable.default;
+    }
+  });
+});
+define('webapp/components/lt-spanned-row', ['exports', 'ember-light-table/components/lt-spanned-row'], function (exports, _ltSpannedRow) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _ltSpannedRow.default;
+    }
+  });
+});
+define('webapp/components/resize-detector', ['exports', 'ember-element-resize-detector/components/resize-detector'], function (exports, _resizeDetector) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _resizeDetector.default;
+    }
+  });
+});
+define('webapp/components/scroll-content-element', ['exports', 'ember-scrollable/components/scroll-content-element'], function (exports, _scrollContentElement) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _scrollContentElement.default;
+    }
+  });
 });
 define('webapp/components/welcome-page', ['exports', 'ember-welcome-page/components/welcome-page'], function (exports, _welcomePage) {
   'use strict';
@@ -121,6 +364,24 @@ define('webapp/helpers/add', ['exports', 'ember-math-helpers/helpers/add'], func
     }
   });
 });
+define('webapp/helpers/and', ['exports', 'ember-truth-helpers/helpers/and'], function (exports, _and) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_and.andHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_and.andHelper);
+  }
+
+  exports.default = forExport;
+});
 define('webapp/helpers/app-version', ['exports', 'webapp/config/environment', 'ember-cli-app-version/utils/regexp'], function (exports, _environment, _regexp) {
   'use strict';
 
@@ -144,6 +405,44 @@ define('webapp/helpers/app-version', ['exports', 'webapp/config/environment', 'e
   }
 
   exports.default = Ember.Helper.helper(appVersion);
+});
+define('webapp/helpers/append', ['exports', 'ember-composable-helpers/helpers/append'], function (exports, _append) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _append.default;
+    }
+  });
+  Object.defineProperty(exports, 'append', {
+    enumerable: true,
+    get: function () {
+      return _append.append;
+    }
+  });
+});
+define('webapp/helpers/array', ['exports', 'ember-composable-helpers/helpers/array'], function (exports, _array) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _array.default;
+    }
+  });
+  Object.defineProperty(exports, 'array', {
+    enumerable: true,
+    get: function () {
+      return _array.array;
+    }
+  });
 });
 define('webapp/helpers/asin', ['exports', 'ember-math-helpers/helpers/asin'], function (exports, _asin) {
   'use strict';
@@ -240,6 +539,44 @@ define('webapp/helpers/atanh', ['exports', 'ember-math-helpers/helpers/atanh'], 
     }
   });
 });
+define('webapp/helpers/camelize', ['exports', 'ember-cli-string-helpers/helpers/camelize'], function (exports, _camelize) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _camelize.default;
+    }
+  });
+  Object.defineProperty(exports, 'camelize', {
+    enumerable: true,
+    get: function () {
+      return _camelize.camelize;
+    }
+  });
+});
+define('webapp/helpers/capitalize', ['exports', 'ember-cli-string-helpers/helpers/capitalize'], function (exports, _capitalize) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _capitalize.default;
+    }
+  });
+  Object.defineProperty(exports, 'capitalize', {
+    enumerable: true,
+    get: function () {
+      return _capitalize.capitalize;
+    }
+  });
+});
 define('webapp/helpers/cbrt', ['exports', 'ember-math-helpers/helpers/cbrt'], function (exports, _cbrt) {
   'use strict';
 
@@ -278,6 +615,44 @@ define('webapp/helpers/ceil', ['exports', 'ember-math-helpers/helpers/ceil'], fu
     }
   });
 });
+define('webapp/helpers/chunk', ['exports', 'ember-composable-helpers/helpers/chunk'], function (exports, _chunk) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _chunk.default;
+    }
+  });
+  Object.defineProperty(exports, 'chunk', {
+    enumerable: true,
+    get: function () {
+      return _chunk.chunk;
+    }
+  });
+});
+define('webapp/helpers/classify', ['exports', 'ember-cli-string-helpers/helpers/classify'], function (exports, _classify) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _classify.default;
+    }
+  });
+  Object.defineProperty(exports, 'classify', {
+    enumerable: true,
+    get: function () {
+      return _classify.classify;
+    }
+  });
+});
 define('webapp/helpers/clz32', ['exports', 'ember-math-helpers/helpers/clz32'], function (exports, _clz) {
   'use strict';
 
@@ -294,6 +669,63 @@ define('webapp/helpers/clz32', ['exports', 'ember-math-helpers/helpers/clz32'], 
     enumerable: true,
     get: function () {
       return _clz.clz32;
+    }
+  });
+});
+define('webapp/helpers/compact', ['exports', 'ember-composable-helpers/helpers/compact'], function (exports, _compact) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _compact.default;
+    }
+  });
+  Object.defineProperty(exports, 'compact', {
+    enumerable: true,
+    get: function () {
+      return _compact.compact;
+    }
+  });
+});
+define('webapp/helpers/compute', ['exports', 'ember-composable-helpers/helpers/compute'], function (exports, _compute) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _compute.default;
+    }
+  });
+  Object.defineProperty(exports, 'compute', {
+    enumerable: true,
+    get: function () {
+      return _compute.compute;
+    }
+  });
+});
+define('webapp/helpers/contains', ['exports', 'ember-composable-helpers/helpers/contains'], function (exports, _contains) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _contains.default;
+    }
+  });
+  Object.defineProperty(exports, 'contains', {
+    enumerable: true,
+    get: function () {
+      return _contains.contains;
     }
   });
 });
@@ -335,6 +767,63 @@ define('webapp/helpers/cosh', ['exports', 'ember-math-helpers/helpers/cosh'], fu
     }
   });
 });
+define('webapp/helpers/dasherize', ['exports', 'ember-cli-string-helpers/helpers/dasherize'], function (exports, _dasherize) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _dasherize.default;
+    }
+  });
+  Object.defineProperty(exports, 'dasherize', {
+    enumerable: true,
+    get: function () {
+      return _dasherize.dasherize;
+    }
+  });
+});
+define('webapp/helpers/datetime-renderer', ['exports', 'ember-datatables/helpers/datetime-renderer'], function (exports, _datetimeRenderer) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _datetimeRenderer.default;
+    }
+  });
+  Object.defineProperty(exports, 'datetimeRenderer', {
+    enumerable: true,
+    get: function () {
+      return _datetimeRenderer.datetimeRenderer;
+    }
+  });
+});
+define('webapp/helpers/dec', ['exports', 'ember-composable-helpers/helpers/dec'], function (exports, _dec) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _dec.default;
+    }
+  });
+  Object.defineProperty(exports, 'dec', {
+    enumerable: true,
+    get: function () {
+      return _dec.dec;
+    }
+  });
+});
 define('webapp/helpers/div', ['exports', 'ember-math-helpers/helpers/div'], function (exports, _div) {
   'use strict';
 
@@ -353,6 +842,43 @@ define('webapp/helpers/div', ['exports', 'ember-math-helpers/helpers/div'], func
       return _div.div;
     }
   });
+});
+define('webapp/helpers/drop', ['exports', 'ember-composable-helpers/helpers/drop'], function (exports, _drop) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _drop.default;
+    }
+  });
+  Object.defineProperty(exports, 'drop', {
+    enumerable: true,
+    get: function () {
+      return _drop.drop;
+    }
+  });
+});
+define('webapp/helpers/eq', ['exports', 'ember-truth-helpers/helpers/equal'], function (exports, _equal) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_equal.equalHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_equal.equalHelper);
+  }
+
+  exports.default = forExport;
 });
 define('webapp/helpers/exp', ['exports', 'ember-math-helpers/helpers/exp'], function (exports, _exp) {
   'use strict';
@@ -389,6 +915,82 @@ define('webapp/helpers/expm1', ['exports', 'ember-math-helpers/helpers/expm1'], 
     enumerable: true,
     get: function () {
       return _expm.expm1;
+    }
+  });
+});
+define('webapp/helpers/filter-by', ['exports', 'ember-composable-helpers/helpers/filter-by'], function (exports, _filterBy) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _filterBy.default;
+    }
+  });
+  Object.defineProperty(exports, 'filterBy', {
+    enumerable: true,
+    get: function () {
+      return _filterBy.filterBy;
+    }
+  });
+});
+define('webapp/helpers/filter', ['exports', 'ember-composable-helpers/helpers/filter'], function (exports, _filter) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _filter.default;
+    }
+  });
+  Object.defineProperty(exports, 'filter', {
+    enumerable: true,
+    get: function () {
+      return _filter.filter;
+    }
+  });
+});
+define('webapp/helpers/find-by', ['exports', 'ember-composable-helpers/helpers/find-by'], function (exports, _findBy) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _findBy.default;
+    }
+  });
+  Object.defineProperty(exports, 'findBy', {
+    enumerable: true,
+    get: function () {
+      return _findBy.findBy;
+    }
+  });
+});
+define('webapp/helpers/flatten', ['exports', 'ember-composable-helpers/helpers/flatten'], function (exports, _flatten) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _flatten.default;
+    }
+  });
+  Object.defineProperty(exports, 'flatten', {
+    enumerable: true,
+    get: function () {
+      return _flatten.flatten;
     }
   });
 });
@@ -430,6 +1032,137 @@ define('webapp/helpers/fround', ['exports', 'ember-math-helpers/helpers/fround']
     }
   });
 });
+define('webapp/helpers/group-by', ['exports', 'ember-composable-helpers/helpers/group-by'], function (exports, _groupBy) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _groupBy.default;
+    }
+  });
+  Object.defineProperty(exports, 'groupBy', {
+    enumerable: true,
+    get: function () {
+      return _groupBy.groupBy;
+    }
+  });
+});
+define('webapp/helpers/gt', ['exports', 'ember-truth-helpers/helpers/gt'], function (exports, _gt) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_gt.gtHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_gt.gtHelper);
+  }
+
+  exports.default = forExport;
+});
+define('webapp/helpers/gte', ['exports', 'ember-truth-helpers/helpers/gte'], function (exports, _gte) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_gte.gteHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_gte.gteHelper);
+  }
+
+  exports.default = forExport;
+});
+define('webapp/helpers/has-next', ['exports', 'ember-composable-helpers/helpers/has-next'], function (exports, _hasNext) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _hasNext.default;
+    }
+  });
+  Object.defineProperty(exports, 'hasNext', {
+    enumerable: true,
+    get: function () {
+      return _hasNext.hasNext;
+    }
+  });
+});
+define('webapp/helpers/has-previous', ['exports', 'ember-composable-helpers/helpers/has-previous'], function (exports, _hasPrevious) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _hasPrevious.default;
+    }
+  });
+  Object.defineProperty(exports, 'hasPrevious', {
+    enumerable: true,
+    get: function () {
+      return _hasPrevious.hasPrevious;
+    }
+  });
+});
+define('webapp/helpers/html-safe', ['exports', 'ember-cli-string-helpers/helpers/html-safe'], function (exports, _htmlSafe) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _htmlSafe.default;
+    }
+  });
+  Object.defineProperty(exports, 'htmlSafe', {
+    enumerable: true,
+    get: function () {
+      return _htmlSafe.htmlSafe;
+    }
+  });
+});
+define('webapp/helpers/humanize', ['exports', 'ember-cli-string-helpers/helpers/humanize'], function (exports, _humanize) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _humanize.default;
+    }
+  });
+  Object.defineProperty(exports, 'humanize', {
+    enumerable: true,
+    get: function () {
+      return _humanize.humanize;
+    }
+  });
+});
 define('webapp/helpers/hypot', ['exports', 'ember-math-helpers/helpers/hypot'], function (exports, _hypot) {
   'use strict';
 
@@ -465,6 +1198,179 @@ define('webapp/helpers/imul', ['exports', 'ember-math-helpers/helpers/imul'], fu
     enumerable: true,
     get: function () {
       return _imul.imul;
+    }
+  });
+});
+define('webapp/helpers/inc', ['exports', 'ember-composable-helpers/helpers/inc'], function (exports, _inc) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _inc.default;
+    }
+  });
+  Object.defineProperty(exports, 'inc', {
+    enumerable: true,
+    get: function () {
+      return _inc.inc;
+    }
+  });
+});
+define('webapp/helpers/intersect', ['exports', 'ember-composable-helpers/helpers/intersect'], function (exports, _intersect) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _intersect.default;
+    }
+  });
+  Object.defineProperty(exports, 'intersect', {
+    enumerable: true,
+    get: function () {
+      return _intersect.intersect;
+    }
+  });
+});
+define('webapp/helpers/invoke', ['exports', 'ember-composable-helpers/helpers/invoke'], function (exports, _invoke) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _invoke.default;
+    }
+  });
+  Object.defineProperty(exports, 'invoke', {
+    enumerable: true,
+    get: function () {
+      return _invoke.invoke;
+    }
+  });
+});
+define('webapp/helpers/is-after', ['exports', 'webapp/config/environment', 'ember-moment/helpers/is-after'], function (exports, _environment, _isAfter) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _isAfter.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/is-array', ['exports', 'ember-truth-helpers/helpers/is-array'], function (exports, _isArray) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_isArray.isArrayHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_isArray.isArrayHelper);
+  }
+
+  exports.default = forExport;
+});
+define('webapp/helpers/is-before', ['exports', 'webapp/config/environment', 'ember-moment/helpers/is-before'], function (exports, _environment, _isBefore) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _isBefore.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/is-between', ['exports', 'webapp/config/environment', 'ember-moment/helpers/is-between'], function (exports, _environment, _isBetween) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _isBetween.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/is-equal', ['exports', 'ember-truth-helpers/helpers/is-equal'], function (exports, _isEqual) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _isEqual.default;
+    }
+  });
+  Object.defineProperty(exports, 'isEqual', {
+    enumerable: true,
+    get: function () {
+      return _isEqual.isEqual;
+    }
+  });
+});
+define('webapp/helpers/is-same-or-after', ['exports', 'webapp/config/environment', 'ember-moment/helpers/is-same-or-after'], function (exports, _environment, _isSameOrAfter) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _isSameOrAfter.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/is-same-or-before', ['exports', 'webapp/config/environment', 'ember-moment/helpers/is-same-or-before'], function (exports, _environment, _isSameOrBefore) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _isSameOrBefore.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/is-same', ['exports', 'webapp/config/environment', 'ember-moment/helpers/is-same'], function (exports, _environment, _isSame) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _isSame.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/join', ['exports', 'ember-composable-helpers/helpers/join'], function (exports, _join) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _join.default;
+    }
+  });
+  Object.defineProperty(exports, 'join', {
+    enumerable: true,
+    get: function () {
+      return _join.join;
     }
   });
 });
@@ -544,6 +1450,99 @@ define('webapp/helpers/log2', ['exports', 'ember-math-helpers/helpers/log2'], fu
     }
   });
 });
+define('webapp/helpers/lowercase', ['exports', 'ember-cli-string-helpers/helpers/lowercase'], function (exports, _lowercase) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _lowercase.default;
+    }
+  });
+  Object.defineProperty(exports, 'lowercase', {
+    enumerable: true,
+    get: function () {
+      return _lowercase.lowercase;
+    }
+  });
+});
+define('webapp/helpers/lt', ['exports', 'ember-truth-helpers/helpers/lt'], function (exports, _lt) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_lt.ltHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_lt.ltHelper);
+  }
+
+  exports.default = forExport;
+});
+define('webapp/helpers/lte', ['exports', 'ember-truth-helpers/helpers/lte'], function (exports, _lte) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_lte.lteHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_lte.lteHelper);
+  }
+
+  exports.default = forExport;
+});
+define('webapp/helpers/map-by', ['exports', 'ember-composable-helpers/helpers/map-by'], function (exports, _mapBy) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _mapBy.default;
+    }
+  });
+  Object.defineProperty(exports, 'mapBy', {
+    enumerable: true,
+    get: function () {
+      return _mapBy.mapBy;
+    }
+  });
+});
+define('webapp/helpers/map', ['exports', 'ember-composable-helpers/helpers/map'], function (exports, _map) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _map.default;
+    }
+  });
+  Object.defineProperty(exports, 'map', {
+    enumerable: true,
+    get: function () {
+      return _map.map;
+    }
+  });
+});
 define('webapp/helpers/max', ['exports', 'ember-math-helpers/helpers/max'], function (exports, _max) {
   'use strict';
 
@@ -601,6 +1600,141 @@ define('webapp/helpers/mod', ['exports', 'ember-math-helpers/helpers/mod'], func
     }
   });
 });
+define('webapp/helpers/moment-add', ['exports', 'webapp/config/environment', 'ember-moment/helpers/moment-add'], function (exports, _environment, _momentAdd) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _momentAdd.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/moment-calendar', ['exports', 'webapp/config/environment', 'ember-moment/helpers/moment-calendar'], function (exports, _environment, _momentCalendar) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _momentCalendar.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/moment-duration', ['exports', 'ember-moment/helpers/moment-duration'], function (exports, _momentDuration) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _momentDuration.default;
+    }
+  });
+});
+define('webapp/helpers/moment-format', ['exports', 'webapp/config/environment', 'ember-moment/helpers/moment-format'], function (exports, _environment, _momentFormat) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _momentFormat.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/moment-from-now', ['exports', 'webapp/config/environment', 'ember-moment/helpers/moment-from-now'], function (exports, _environment, _momentFromNow) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _momentFromNow.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/moment-from', ['exports', 'webapp/config/environment', 'ember-moment/helpers/moment-from'], function (exports, _environment, _momentFrom) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _momentFrom.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/moment-subtract', ['exports', 'webapp/config/environment', 'ember-moment/helpers/moment-subtract'], function (exports, _environment, _momentSubtract) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _momentSubtract.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/moment-to-date', ['exports', 'webapp/config/environment', 'ember-moment/helpers/moment-to-date'], function (exports, _environment, _momentToDate) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _momentToDate.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/moment-to-now', ['exports', 'webapp/config/environment', 'ember-moment/helpers/moment-to-now'], function (exports, _environment, _momentToNow) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _momentToNow.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/moment-to', ['exports', 'webapp/config/environment', 'ember-moment/helpers/moment-to'], function (exports, _environment, _momentTo) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _momentTo.default.extend({
+    globalAllowEmpty: !!Ember.get(_environment.default, 'moment.allowEmpty')
+  });
+});
+define('webapp/helpers/moment-unix', ['exports', 'ember-moment/helpers/unix'], function (exports, _unix) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _unix.default;
+    }
+  });
+  Object.defineProperty(exports, 'unix', {
+    enumerable: true,
+    get: function () {
+      return _unix.unix;
+    }
+  });
+});
+define('webapp/helpers/moment', ['exports', 'ember-moment/helpers/moment'], function (exports, _moment) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _moment.default;
+    }
+  });
+});
 define('webapp/helpers/mult', ['exports', 'ember-math-helpers/helpers/mult'], function (exports, _mult) {
   'use strict';
 
@@ -617,6 +1751,162 @@ define('webapp/helpers/mult', ['exports', 'ember-math-helpers/helpers/mult'], fu
     enumerable: true,
     get: function () {
       return _mult.mult;
+    }
+  });
+});
+define('webapp/helpers/next', ['exports', 'ember-composable-helpers/helpers/next'], function (exports, _next) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _next.default;
+    }
+  });
+  Object.defineProperty(exports, 'next', {
+    enumerable: true,
+    get: function () {
+      return _next.next;
+    }
+  });
+});
+define('webapp/helpers/not-eq', ['exports', 'ember-truth-helpers/helpers/not-equal'], function (exports, _notEqual) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_notEqual.notEqualHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_notEqual.notEqualHelper);
+  }
+
+  exports.default = forExport;
+});
+define('webapp/helpers/not', ['exports', 'ember-truth-helpers/helpers/not'], function (exports, _not) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_not.notHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_not.notHelper);
+  }
+
+  exports.default = forExport;
+});
+define('webapp/helpers/now', ['exports', 'ember-moment/helpers/now'], function (exports, _now) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _now.default;
+    }
+  });
+});
+define('webapp/helpers/object-at', ['exports', 'ember-composable-helpers/helpers/object-at'], function (exports, _objectAt) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _objectAt.default;
+    }
+  });
+  Object.defineProperty(exports, 'objectAt', {
+    enumerable: true,
+    get: function () {
+      return _objectAt.objectAt;
+    }
+  });
+});
+define('webapp/helpers/optional', ['exports', 'ember-composable-helpers/helpers/optional'], function (exports, _optional) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _optional.default;
+    }
+  });
+  Object.defineProperty(exports, 'optional', {
+    enumerable: true,
+    get: function () {
+      return _optional.optional;
+    }
+  });
+});
+define('webapp/helpers/or', ['exports', 'ember-truth-helpers/helpers/or'], function (exports, _or) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_or.orHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_or.orHelper);
+  }
+
+  exports.default = forExport;
+});
+define('webapp/helpers/pipe-action', ['exports', 'ember-composable-helpers/helpers/pipe-action'], function (exports, _pipeAction) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _pipeAction.default;
+    }
+  });
+});
+define('webapp/helpers/pipe', ['exports', 'ember-composable-helpers/helpers/pipe'], function (exports, _pipe) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _pipe.default;
+    }
+  });
+  Object.defineProperty(exports, 'pipe', {
+    enumerable: true,
+    get: function () {
+      return _pipe.pipe;
     }
   });
 });
@@ -647,6 +1937,44 @@ define('webapp/helpers/pow', ['exports', 'ember-math-helpers/helpers/pow'], func
     }
   });
 });
+define('webapp/helpers/previous', ['exports', 'ember-composable-helpers/helpers/previous'], function (exports, _previous) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _previous.default;
+    }
+  });
+  Object.defineProperty(exports, 'previous', {
+    enumerable: true,
+    get: function () {
+      return _previous.previous;
+    }
+  });
+});
+define('webapp/helpers/queue', ['exports', 'ember-composable-helpers/helpers/queue'], function (exports, _queue) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _queue.default;
+    }
+  });
+  Object.defineProperty(exports, 'queue', {
+    enumerable: true,
+    get: function () {
+      return _queue.queue;
+    }
+  });
+});
 define('webapp/helpers/random', ['exports', 'ember-math-helpers/helpers/random'], function (exports, _random) {
   'use strict';
 
@@ -663,6 +1991,101 @@ define('webapp/helpers/random', ['exports', 'ember-math-helpers/helpers/random']
     enumerable: true,
     get: function () {
       return _random.random;
+    }
+  });
+});
+define('webapp/helpers/range', ['exports', 'ember-composable-helpers/helpers/range'], function (exports, _range) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _range.default;
+    }
+  });
+  Object.defineProperty(exports, 'range', {
+    enumerable: true,
+    get: function () {
+      return _range.range;
+    }
+  });
+});
+define('webapp/helpers/reduce', ['exports', 'ember-composable-helpers/helpers/reduce'], function (exports, _reduce) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _reduce.default;
+    }
+  });
+  Object.defineProperty(exports, 'reduce', {
+    enumerable: true,
+    get: function () {
+      return _reduce.reduce;
+    }
+  });
+});
+define('webapp/helpers/reject-by', ['exports', 'ember-composable-helpers/helpers/reject-by'], function (exports, _rejectBy) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _rejectBy.default;
+    }
+  });
+  Object.defineProperty(exports, 'rejectBy', {
+    enumerable: true,
+    get: function () {
+      return _rejectBy.rejectBy;
+    }
+  });
+});
+define('webapp/helpers/repeat', ['exports', 'ember-composable-helpers/helpers/repeat'], function (exports, _repeat) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _repeat.default;
+    }
+  });
+  Object.defineProperty(exports, 'repeat', {
+    enumerable: true,
+    get: function () {
+      return _repeat.repeat;
+    }
+  });
+});
+define('webapp/helpers/reverse', ['exports', 'ember-composable-helpers/helpers/reverse'], function (exports, _reverse) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _reverse.default;
+    }
+  });
+  Object.defineProperty(exports, 'reverse', {
+    enumerable: true,
+    get: function () {
+      return _reverse.reverse;
     }
   });
 });
@@ -695,6 +2118,25 @@ define('webapp/helpers/route-action', ['exports', 'ember-route-action-helper/hel
     enumerable: true,
     get: function () {
       return _routeAction.default;
+    }
+  });
+});
+define('webapp/helpers/shuffle', ['exports', 'ember-composable-helpers/helpers/shuffle'], function (exports, _shuffle) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _shuffle.default;
+    }
+  });
+  Object.defineProperty(exports, 'shuffle', {
+    enumerable: true,
+    get: function () {
+      return _shuffle.shuffle;
     }
   });
 });
@@ -744,6 +2186,44 @@ define('webapp/helpers/singularize', ['exports', 'ember-inflector/lib/helpers/si
   });
   exports.default = _singularize.default;
 });
+define('webapp/helpers/slice', ['exports', 'ember-composable-helpers/helpers/slice'], function (exports, _slice) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _slice.default;
+    }
+  });
+  Object.defineProperty(exports, 'slice', {
+    enumerable: true,
+    get: function () {
+      return _slice.slice;
+    }
+  });
+});
+define('webapp/helpers/sort-by', ['exports', 'ember-composable-helpers/helpers/sort-by'], function (exports, _sortBy) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _sortBy.default;
+    }
+  });
+  Object.defineProperty(exports, 'sortBy', {
+    enumerable: true,
+    get: function () {
+      return _sortBy.sortBy;
+    }
+  });
+});
 define('webapp/helpers/sqrt', ['exports', 'ember-math-helpers/helpers/sqrt'], function (exports, _sqrt) {
   'use strict';
 
@@ -779,6 +2259,25 @@ define('webapp/helpers/sub', ['exports', 'ember-math-helpers/helpers/sub'], func
     enumerable: true,
     get: function () {
       return _sub.sub;
+    }
+  });
+});
+define('webapp/helpers/take', ['exports', 'ember-composable-helpers/helpers/take'], function (exports, _take) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _take.default;
+    }
+  });
+  Object.defineProperty(exports, 'take', {
+    enumerable: true,
+    get: function () {
+      return _take.take;
     }
   });
 });
@@ -820,6 +2319,57 @@ define('webapp/helpers/tanh', ['exports', 'ember-math-helpers/helpers/tanh'], fu
     }
   });
 });
+define('webapp/helpers/titleize', ['exports', 'ember-cli-string-helpers/helpers/titleize'], function (exports, _titleize) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _titleize.default;
+    }
+  });
+  Object.defineProperty(exports, 'titleize', {
+    enumerable: true,
+    get: function () {
+      return _titleize.titleize;
+    }
+  });
+});
+define('webapp/helpers/toggle-action', ['exports', 'ember-composable-helpers/helpers/toggle-action'], function (exports, _toggleAction) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _toggleAction.default;
+    }
+  });
+});
+define('webapp/helpers/toggle', ['exports', 'ember-composable-helpers/helpers/toggle'], function (exports, _toggle) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _toggle.default;
+    }
+  });
+  Object.defineProperty(exports, 'toggle', {
+    enumerable: true,
+    get: function () {
+      return _toggle.toggle;
+    }
+  });
+});
 define('webapp/helpers/trunc', ['exports', 'ember-math-helpers/helpers/trunc'], function (exports, _trunc) {
   'use strict';
 
@@ -838,6 +2388,157 @@ define('webapp/helpers/trunc', ['exports', 'ember-math-helpers/helpers/trunc'], 
       return _trunc.trunc;
     }
   });
+});
+define('webapp/helpers/truncate', ['exports', 'ember-cli-string-helpers/helpers/truncate'], function (exports, _truncate) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _truncate.default;
+    }
+  });
+  Object.defineProperty(exports, 'truncate', {
+    enumerable: true,
+    get: function () {
+      return _truncate.truncate;
+    }
+  });
+});
+define('webapp/helpers/underscore', ['exports', 'ember-cli-string-helpers/helpers/underscore'], function (exports, _underscore) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _underscore.default;
+    }
+  });
+  Object.defineProperty(exports, 'underscore', {
+    enumerable: true,
+    get: function () {
+      return _underscore.underscore;
+    }
+  });
+});
+define('webapp/helpers/union', ['exports', 'ember-composable-helpers/helpers/union'], function (exports, _union) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _union.default;
+    }
+  });
+  Object.defineProperty(exports, 'union', {
+    enumerable: true,
+    get: function () {
+      return _union.union;
+    }
+  });
+});
+define('webapp/helpers/unix', ['exports', 'ember-moment/helpers/unix'], function (exports, _unix) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _unix.default;
+    }
+  });
+  Object.defineProperty(exports, 'unix', {
+    enumerable: true,
+    get: function () {
+      return _unix.unix;
+    }
+  });
+});
+define('webapp/helpers/uppercase', ['exports', 'ember-cli-string-helpers/helpers/uppercase'], function (exports, _uppercase) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _uppercase.default;
+    }
+  });
+  Object.defineProperty(exports, 'uppercase', {
+    enumerable: true,
+    get: function () {
+      return _uppercase.uppercase;
+    }
+  });
+});
+define('webapp/helpers/w', ['exports', 'ember-cli-string-helpers/helpers/w'], function (exports, _w) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _w.default;
+    }
+  });
+  Object.defineProperty(exports, 'w', {
+    enumerable: true,
+    get: function () {
+      return _w.w;
+    }
+  });
+});
+define('webapp/helpers/without', ['exports', 'ember-composable-helpers/helpers/without'], function (exports, _without) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _without.default;
+    }
+  });
+  Object.defineProperty(exports, 'without', {
+    enumerable: true,
+    get: function () {
+      return _without.without;
+    }
+  });
+});
+define('webapp/helpers/xor', ['exports', 'ember-truth-helpers/helpers/xor'], function (exports, _xor) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+
+  var forExport = null;
+
+  if (Ember.Helper) {
+    forExport = Ember.Helper.helper(_xor.xorHelper);
+  } else if (Ember.HTMLBars.makeBoundHelper) {
+    forExport = Ember.HTMLBars.makeBoundHelper(_xor.xorHelper);
+  }
+
+  exports.default = forExport;
 });
 define('webapp/initializers/app-version', ['exports', 'ember-cli-app-version/initializer-factory', 'webapp/config/environment'], function (exports, _initializerFactory, _environment) {
   'use strict';
@@ -955,6 +2656,17 @@ define('webapp/initializers/injectStore', ['exports'], function (exports) {
     initialize: function initialize() {}
   };
 });
+define('webapp/initializers/responsive', ['exports', 'ember-responsive/initializers/responsive'], function (exports, _responsive) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = {
+    name: 'responsive',
+    initialize: _responsive.initialize
+  };
+});
 define('webapp/initializers/store', ['exports'], function (exports) {
   'use strict';
 
@@ -979,6 +2691,85 @@ define('webapp/initializers/transforms', ['exports'], function (exports) {
     initialize: function initialize() {}
   };
 });
+define('webapp/initializers/truth-helpers', ['exports', 'ember-truth-helpers/utils/register-helper', 'ember-truth-helpers/helpers/and', 'ember-truth-helpers/helpers/or', 'ember-truth-helpers/helpers/equal', 'ember-truth-helpers/helpers/not', 'ember-truth-helpers/helpers/is-array', 'ember-truth-helpers/helpers/not-equal', 'ember-truth-helpers/helpers/gt', 'ember-truth-helpers/helpers/gte', 'ember-truth-helpers/helpers/lt', 'ember-truth-helpers/helpers/lte'], function (exports, _registerHelper, _and, _or, _equal, _not, _isArray, _notEqual, _gt, _gte, _lt, _lte) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.initialize = initialize;
+  function initialize() /* container, application */{
+
+    // Do not register helpers from Ember 1.13 onwards, starting from 1.13 they
+    // will be auto-discovered.
+    if (Ember.Helper) {
+      return;
+    }
+
+    (0, _registerHelper.registerHelper)('and', _and.andHelper);
+    (0, _registerHelper.registerHelper)('or', _or.orHelper);
+    (0, _registerHelper.registerHelper)('eq', _equal.equalHelper);
+    (0, _registerHelper.registerHelper)('not', _not.notHelper);
+    (0, _registerHelper.registerHelper)('is-array', _isArray.isArrayHelper);
+    (0, _registerHelper.registerHelper)('not-eq', _notEqual.notEqualHelper);
+    (0, _registerHelper.registerHelper)('gt', _gt.gtHelper);
+    (0, _registerHelper.registerHelper)('gte', _gte.gteHelper);
+    (0, _registerHelper.registerHelper)('lt', _lt.ltHelper);
+    (0, _registerHelper.registerHelper)('lte', _lte.lteHelper);
+  }
+
+  exports.default = {
+    name: 'truth-helpers',
+    initialize: initialize
+  };
+});
+define('webapp/initializers/viewport-config', ['exports', 'webapp/config/environment', 'ember-in-viewport/utils/can-use-dom'], function (exports, _environment, _canUseDom) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.initialize = initialize;
+
+
+  var defaultConfig = {
+    viewportEnabled: true,
+    viewportSpy: false,
+    viewportScrollSensitivity: 1,
+    viewportRefreshRate: 100,
+    viewportListeners: [{ context: window, event: 'scroll.scrollable' }, { context: window, event: 'resize.resizable' }],
+    viewportTolerance: {
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0
+    }
+  };
+
+  if (_canUseDom.default) {
+    defaultConfig.viewportListeners.push({
+      context: document,
+      event: 'touchmove.scrollable'
+    });
+  }
+
+  var assign = Ember.assign || Ember.merge;
+
+  function initialize() {
+    var application = arguments[1] || arguments[0];
+    var _config$viewportConfi = _environment.default.viewportConfig,
+        viewportConfig = _config$viewportConfi === undefined ? {} : _config$viewportConfi;
+
+    var mergedConfig = assign({}, defaultConfig, viewportConfig);
+
+    application.register('config:in-viewport', mergedConfig, { instantiate: false });
+  }
+
+  exports.default = {
+    name: 'viewport-config',
+    initialize: initialize
+  };
+});
 define("webapp/instance-initializers/ember-data", ["exports", "ember-data/instance-initializers/initialize-store-service"], function (exports, _initializeStoreService) {
   "use strict";
 
@@ -1001,26 +2792,97 @@ define("webapp/models/comparison", ["exports", "ember-data"], function (exports,
   var fieldNames = ["recordNumber", "profileName", "transactionDate", "transactionAmount", "transactionNarrative", "transactionDescription", "transactionID", "transactionType", "walletReference"];
 
   exports.default = _emberData.default.Model.extend({
+    //store: Ember.inject.service(),
 
     clientMarkoff: _emberData.default.attr(),
     tutukaMarkoff: _emberData.default.attr(),
 
     /**
+     * Copy the source properties to the destination hash using the given prefix, if any
+     * @param src
+     * @param dest
+     * @param prefix
+     */
+    copyRecordProperties: function copyRecordProperties(source, dest, prefix) {
+      prefix = prefix || "";
+      Ember.$.each(fieldNames, function (fIndex, fieldName) {
+        dest[prefix + fieldName] = source[fieldName];
+      });
+    },
+
+    getBlankRecord: function getBlankRecord() {
+      return {
+        recordNumber: null,
+        recordComment: null,
+        transactionID: null,
+        profileName: null,
+        transactionDate: null,
+        transactionNarrative: null,
+        transactionDescription: null,
+        transactionType: null,
+        walletReference: null,
+        transactionAmount: null
+      };
+    },
+
+    /**
      * Get suggestions on possible/closest matches between client and tutuka markoff files.
      * @return the suggestions as two arrays with best matches implied by index
      */
-    suggestions: Ember.computed('clientMarkoff', 'tutukaMarkoff', function () {
+    suggestions: Ember.computed('matchingScores', function () {
 
-      // clone scores, sort by score value descending
-      var sortedScores = this.get("matchingScores").slice(0).sort(function (a, b) {
-        return a.score - b.score;
+      // flatten scores, sort by score value, descending
+      var sortedScores = [].concat.apply([], this.get("matchingScores")).sort(function (a, b) {
+        return b.score - a.score;
       });
 
-      console.log("sortedScores:", sortedScores);
-      var suggestions = {
-        clientRecords: [],
-        tutukaRecords: []
-      };
+      Ember.$.each(sortedScores, function (cIndex, sortedScore) {
+
+        console.log("sortedScores:", sortedScore.score);
+      });
+      // suggestions
+      var suggestions = [];
+
+      // convenient note on used record indexes
+      var suggested = { client: [], tutuka: [] };
+
+      // iterate to pick the best suggestions
+      var clientMarkoffMismatches = this.get("clientMarkoff.mismatches");
+      var tutukaMarkoffMismatches = this.get("tutukaMarkoff.mismatches");
+      var scoreRecord = void 0;
+      for (var i = 0; i < sortedScores.length; i++) {
+        scoreRecord = sortedScores[i];
+
+        // ensure records from neither side have already been suggested
+        var bSuggested = Ember.$.inArray(scoreRecord.clientMarkoffIndex, suggested.client) >= 0 || Ember.$.inArray(scoreRecord.tutukaMarkoffIndex, suggested.tutuka) >= 0;
+        if (!bSuggested) {
+
+          // get matched records
+          var clientRecord = clientMarkoffMismatches[scoreRecord.clientMarkoffIndex] || this.getBlankRecord();
+          var tutukaRecord = tutukaMarkoffMismatches[scoreRecord.tutukaMarkoffIndex] || this.getBlankRecord();
+
+          // build a joint record
+          var suggestion = {};
+          this.copyRecordProperties(clientRecord, suggestion, "client_");
+          this.copyRecordProperties(tutukaRecord, suggestion, "tutuka_");
+          suggestion.score = scoreRecord.score;
+
+          // add suggestion
+          suggestions.push(this.get('store').createRecord('suggestion', suggestion));
+
+          // stop if we have gathered sugestions for all records
+          if (suggestions.length >= clientMarkoffMismatches.length && suggestions.length >= tutukaMarkoffMismatches.length) {
+            break;
+          }
+          // else, note used
+          else {
+              suggested.client.push(scoreRecord.clientMarkoffIndex);
+              suggested.tutuka.push(scoreRecord.tutukaMarkoffIndex);
+            }
+        }
+      }
+      console.log("suggestions:", suggestions);
+      return suggestions;
     }),
 
     /**
@@ -1033,24 +2895,32 @@ define("webapp/models/comparison", ["exports", "ember-data"], function (exports,
      */
     matchingScores: Ember.computed('clientMarkoff', 'tutukaMarkoff', function () {
 
-      // get client/tutuka mismatched records
-      var clientMismatches = this.get("clientMarkoff.mismatches");
-      var tutukaMismatches = this.get("tutukaMarkoff.mismatches");
+      // clone client/tutuka mismatched records
+      var clientMismatches = this.get("clientMarkoff.mismatches").slice(0);
+      var tutukaMismatches = this.get("tutukaMarkoff.mismatches").slice(0);
 
       // get the difference in record count between the files if any,
       // useful when comparing record numbers
       var recordCountDifference = Math.abs(clientMismatches.length - tutukaMismatches.length);
 
+      // add blanks for unbalanced record counts
+      while (clientMismatches.length < tutukaMismatches.length) {
+        clientMismatches.push({ recordNumber: "-" });
+      }
+      while (clientMismatches.length > tutukaMismatches.length) {
+        tutukaMismatches.push({ recordNumber: "-" });
+      }
+
       // Evaluate close match scores
       var scores = [];
       // Compare each client markoff record...
-      $.each(clientMismatches, function (cIndex, clientRecord) {
+      Ember.$.each(clientMismatches, function (cIndex, clientRecord) {
         var tutukaScores = [];
         // ...with each tutuka markof record's ...
-        $.each(tutukaMismatches, function (tIndex, tutukaRecord) {
+        Ember.$.each(tutukaMismatches, function (tIndex, tutukaRecord) {
           var score = 0.0;
           // ...fields
-          $.each(fieldNames, function (fIndex, fieldName) {
+          Ember.$.each(fieldNames, function (fIndex, fieldName) {
             // Add a point for any field match
             if (clientRecord[fieldName] == tutukaRecord[fieldName]) {
               score = score + 1.0;
@@ -1064,27 +2934,26 @@ define("webapp/models/comparison", ["exports", "ember-data"], function (exports,
                 // TODO: this does not take into account
                 // which side has more records
                 // or how many "extra" records have been processed
-                if (clientRecordNumber && tutukaRecordNumber && Math.abs(clientRecordNumber - tutukaRecordNumber) <= recordCountDifference) {
+                if (clientRecordNumber && tutukaRecordNumber && !isNaN(clientRecordNumber) && !isNaN(tutukaRecordNumber) && Math.abs(clientRecordNumber - tutukaRecordNumber) <= recordCountDifference) {
                   score = score + 0.5;
                 }
               }
           });
           // add total score for records combo
-          tutukaScores.push({
+          var oScore = {
             clientMarkoffIndex: cIndex,
             tutukaMarkoffIndex: tIndex,
-            clientRecordRecordNumber: clientRecord.recordNumber,
-            tutukaRecordRecordNumber: tutukaRecord.recordNumber,
+            clientRecordNumber: clientRecord.recordNumber,
+            tutukaRecordNumber: tutukaRecord.recordNumber,
             score: score
-          });
+          };
+          tutukaScores.push(oScore);
         });
         scores.push(tutukaScores);
       });
-
       return scores;
     })
-    /*
-     */
+
   });
 });
 define("webapp/models/markoff-file", ["exports", "ember-data"], function (exports, _emberData) {
@@ -1104,8 +2973,8 @@ define("webapp/models/markoff-file", ["exports", "ember-data"], function (export
 
   });
 });
-define('webapp/models/markoff-record', ['exports', 'ember-data'], function (exports, _emberData) {
-  'use strict';
+define("webapp/models/markoff-record", ["exports", "ember-data"], function (exports, _emberData) {
+  "use strict";
 
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -1121,6 +2990,37 @@ define('webapp/models/markoff-record', ['exports', 'ember-data'], function (expo
     transactionType: _emberData.default.attr(),
     walletReference: _emberData.default.attr(),
     transactionAmount: _emberData.default.attr()
+
+  });
+});
+define("webapp/models/suggestion", ["exports", "ember-data"], function (exports, _emberData) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _emberData.default.Model.extend({
+    client_recordNumber: _emberData.default.attr(),
+    client_recordComment: _emberData.default.attr(),
+    client_transactionID: _emberData.default.attr(),
+    client_profileName: _emberData.default.attr(),
+    client_transactionDate: _emberData.default.attr(),
+    client_transactionNarrative: _emberData.default.attr(),
+    client_transactionDescription: _emberData.default.attr(),
+    client_transactionType: _emberData.default.attr(),
+    client_walletReference: _emberData.default.attr(),
+    client_transactionAmount: _emberData.default.attr(),
+    score: _emberData.default.attr(),
+    tutuka_recordNumber: _emberData.default.attr(),
+    tutuka_recordComment: _emberData.default.attr(),
+    tutuka_transactionID: _emberData.default.attr(),
+    tutuka_profileName: _emberData.default.attr(),
+    tutuka_transactionDate: _emberData.default.attr(),
+    tutuka_transactionNarrative: _emberData.default.attr(),
+    tutuka_transactionDescription: _emberData.default.attr(),
+    tutuka_transactionType: _emberData.default.attr(),
+    tutuka_walletReference: _emberData.default.attr(),
+    tutuka_transactionAmount: _emberData.default.attr()
 
   });
 });
@@ -1218,8 +3118,8 @@ define("webapp/routes/comparisons/comparison/index", ["exports"], function (expo
 
   });
 });
-define('webapp/routes/comparisons/comparison/report', ['exports'], function (exports) {
-  'use strict';
+define("webapp/routes/comparisons/comparison/report", ["exports"], function (exports) {
+  "use strict";
 
   Object.defineProperty(exports, "__esModule", {
     value: true
@@ -1236,6 +3136,50 @@ define('webapp/services/ajax', ['exports', 'ember-ajax/services/ajax'], function
     enumerable: true,
     get: function () {
       return _ajax.default;
+    }
+  });
+});
+define('webapp/services/media', ['exports', 'ember-responsive/media'], function (exports, _media) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _media.default;
+});
+define('webapp/services/moment', ['exports', 'webapp/config/environment', 'ember-moment/services/moment'], function (exports, _environment, _moment) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _moment.default.extend({
+    defaultFormat: Ember.get(_environment.default, 'moment.outputFormat')
+  });
+});
+define('webapp/services/resize-detector', ['exports', 'ember-element-resize-detector/services/resize-detector'], function (exports, _resizeDetector) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _resizeDetector.default;
+    }
+  });
+});
+define('webapp/services/scrollbar-thickness', ['exports', 'ember-scrollable/services/scrollbar-thickness'], function (exports, _scrollbarThickness) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _scrollbarThickness.default;
     }
   });
 });
@@ -1269,7 +3213,7 @@ define("webapp/templates/comparisons/comparison/report", ["exports"], function (
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.default = Ember.HTMLBars.template({ "id": "TT2orAHr", "block": "{\"statements\":[[0,\"\\n\"],[11,\"table\",[]],[15,\"class\",\"table table-hover table-responsive\"],[13],[0,\"\\n\\n\"],[14],[0,\"\\n\\n\\n\\n\"],[11,\"table\",[]],[15,\"class\",\"table table-hover table-responsive\"],[13],[0,\"\\n  \"],[11,\"caption\",[]],[15,\"style\",\"caption-side: top;\"],[13],[0,\"Matching scores between client (vertical)and tutuka (horizontal) records\"],[14],[0,\"\\n  \"],[11,\"thead\",[]],[13],[0,\"\\n    \"],[11,\"tr\",[]],[13],[0,\"\\n      \"],[11,\"th\",[]],[13],[0,\"Record #\"],[14],[0,\"\\n\"],[6,[\"each\"],[[28,[\"model\",\"tutukaMarkoff\",\"mismatches\"]]],null,{\"statements\":[[0,\"        \"],[11,\"th\",[]],[13],[1,[28,[\"tutukaMismatch\",\"recordNumber\"]],false],[14],[0,\"\\n\"]],\"locals\":[\"tutukaMismatch\"]},null],[0,\"    \"],[14],[0,\"\\n  \"],[14],[0,\"\\n  \"],[11,\"tbody\",[]],[15,\"style\",\"text-align: right\"],[13],[0,\"\\n\"],[6,[\"each\"],[[28,[\"model\",\"matchingScores\"]]],null,{\"statements\":[[0,\"    \"],[11,\"tr\",[]],[13],[0,\"\\n      \"],[11,\"th\",[]],[13],[1,[28,[\"rowScores\",\"0\",\"clientRecordRecordNumber\"]],false],[14],[0,\"\\n\"],[6,[\"each\"],[[28,[\"rowScores\"]]],null,{\"statements\":[[0,\"        \"],[11,\"td\",[]],[16,\"style\",[34,[\"background-color: rgba(51, 153, 102, \",[33,[\"mult\"],[[28,[\"score\",\"score\"]],0.1],null],\");\"]]],[13],[1,[28,[\"score\",\"score\"]],false],[14],[0,\"\\n\"]],\"locals\":[\"score\",\"tutukaIndex\"]},null],[0,\"    \"],[14],[0,\"\\n\"]],\"locals\":[\"rowScores\",\"clientIndex\"]},null],[0,\"  \"],[14],[0,\"\\n\"],[14],[0,\"\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"hasPartials\":false}", "meta": { "moduleName": "webapp/templates/comparisons/comparison/report.hbs" } });
+  exports.default = Ember.HTMLBars.template({ "id": "4RjQBAhX", "block": "{\"statements\":[[11,\"ul\",[]],[15,\"class\",\"nav nav-tabs\"],[15,\"id\",\"myTab\"],[15,\"role\",\"tablist\"],[13],[0,\"\\n  \"],[11,\"li\",[]],[15,\"class\",\"nav-item\"],[13],[0,\"\\n    \"],[11,\"a\",[]],[15,\"class\",\"nav-link active\"],[15,\"id\",\"suggestions-tab\"],[15,\"data-toggle\",\"tab\"],[15,\"href\",\"#suggestions\"],[15,\"role\",\"tab\"],[15,\"aria-controls\",\"suggestions\"],[15,\"aria-expanded\",\"true\"],[13],[0,\"Suggestions\"],[14],[0,\"\\n  \"],[14],[0,\"\\n  \"],[11,\"li\",[]],[15,\"class\",\"nav-item\"],[13],[0,\"\\n    \"],[11,\"a\",[]],[15,\"class\",\"nav-link\"],[15,\"id\",\"scores-tab\"],[15,\"data-toggle\",\"tab\"],[15,\"href\",\"#scores\"],[15,\"role\",\"tab\"],[15,\"aria-controls\",\"scores\"],[13],[0,\"Scores\"],[14],[0,\"\\n  \"],[14],[0,\"\\n\"],[14],[0,\"\\n\"],[11,\"div\",[]],[15,\"class\",\"tab-content\"],[15,\"id\",\"myTabContent\"],[13],[0,\"\\n  \"],[11,\"div\",[]],[15,\"class\",\"tab-pane fade show active\"],[15,\"id\",\"suggestions\"],[15,\"role\",\"tabpanel\"],[15,\"aria-labelledby\",\"suggestions-tab\"],[13],[0,\"\\n  \"],[1,[33,[\"data-table\"],null,[[\"data\",\"searching\",\"paging\",\"ordering\",\"columns\"],[[28,[\"model\",\"suggestions\"]],false,false,[28,[\"client_recordNumber\"]],[33,[\"array\"],[[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Client Record\",\"client_recordNumber\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Client Profile\",\"client_profileName\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\"],[\"Client Tx Date\",\"client_transactionDate\"]]],[33,[\"hash\"],null,[[\"title\",\"property\"],[\"Client Tx Amount\",\"client_transactionAmount\"]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Client Tx Narrative\",\"client_transactionNarrative\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Client Tx Desc\",\"client_transactionDescription\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Client Tx Id\",\"client_transactionID\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Client Tx Type\",\"client_transactionType\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\"],[\"Client Wallet\",\"client_walletReference\"]]],[33,[\"hash\"],null,[[\"title\",\"property\"],[\"Score\",\"score\"]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Tutuka Record\",\"tutuka_recordNumber\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Tutuka Profile\",\"tutuka_profileName\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\"],[\"Tutuka Tx Date\",\"tutuka_transactionDate\"]]],[33,[\"hash\"],null,[[\"title\",\"property\"],[\"Tutuka Tx Amount\",\"tutuka_transactionAmount\"]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Tutuka Tx Narrative\",\"tutuka_transactionNarrative\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Tutuka Tx Desc\",\"tutuka_transactionDescription\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Tutuka Tx Id\",\"tutuka_transactionID\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\",\"visible\"],[\"Tutuka Tx Type\",\"tutuka_transactionType\",false]]],[33,[\"hash\"],null,[[\"title\",\"property\"],[\"Tutuka Wallet\",\"tutuka_walletReference\"]]]],null]]]],false],[0,\"\\n  \"],[14],[0,\"\\n  \"],[11,\"div\",[]],[15,\"class\",\"tab-pane fade\"],[15,\"id\",\"scores\"],[15,\"role\",\"tabpanel\"],[15,\"aria-labelledby\",\"scores-tab\"],[13],[0,\"\\n    \"],[11,\"table\",[]],[15,\"class\",\"table table-hover table-responsive\"],[13],[0,\"\\n      \"],[11,\"caption\",[]],[15,\"style\",\"caption-side: top;\"],[13],[0,\"Matching scores between client (vertical)and tutuka (horizontal) records\"],[14],[0,\"\\n      \"],[11,\"thead\",[]],[13],[0,\"\\n        \"],[11,\"tr\",[]],[13],[0,\"\\n          \"],[11,\"th\",[]],[13],[0,\"Record #\"],[14],[0,\"\\n\"],[6,[\"each\"],[[28,[\"model\",\"tutukaMarkoff\",\"mismatches\"]]],null,{\"statements\":[[0,\"            \"],[11,\"th\",[]],[13],[1,[28,[\"tutukaMismatch\",\"recordNumber\"]],false],[14],[0,\"\\n\"]],\"locals\":[\"tutukaMismatch\"]},null],[0,\"        \"],[14],[0,\"\\n      \"],[14],[0,\"\\n      \"],[11,\"tbody\",[]],[15,\"style\",\"text-align: right\"],[13],[0,\"\\n\"],[6,[\"each\"],[[28,[\"model\",\"matchingScores\"]]],null,{\"statements\":[[0,\"        \"],[11,\"tr\",[]],[13],[0,\"\\n          \"],[11,\"th\",[]],[13],[1,[28,[\"rowScores\",\"0\",\"clientRecordNumber\"]],false],[14],[0,\"\\n\"],[6,[\"each\"],[[28,[\"rowScores\"]]],null,{\"statements\":[[0,\"            \"],[11,\"td\",[]],[16,\"style\",[34,[\"background-color: rgba(51, 153, 102, \",[33,[\"mult\"],[[28,[\"score\",\"score\"]],0.1],null],\");\"]]],[13],[1,[28,[\"score\",\"score\"]],false],[14],[0,\"\\n\"]],\"locals\":[\"score\",\"tutukaIndex\"]},null],[0,\"        \"],[14],[0,\"\\n\"]],\"locals\":[\"rowScores\",\"clientIndex\"]},null],[0,\"      \"],[14],[0,\"\\n    \"],[14],[0,\"\\n  \"],[14],[0,\"\\n\"],[14],[0,\"\\n\\n\\n\\n\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"hasPartials\":false}", "meta": { "moduleName": "webapp/templates/comparisons/comparison/report.hbs" } });
 });
 define("webapp/templates/components/file-info", ["exports"], function (exports) {
   "use strict";
@@ -1278,6 +3222,34 @@ define("webapp/templates/components/file-info", ["exports"], function (exports) 
     value: true
   });
   exports.default = Ember.HTMLBars.template({ "id": "8pPYQ/gK", "block": "{\"statements\":[[11,\"div\",[]],[15,\"class\",\"card\"],[13],[0,\"\\n  \"],[11,\"div\",[]],[15,\"class\",\"card-body\"],[13],[0,\"\\n    \"],[11,\"h5\",[]],[15,\"class\",\"card-title\"],[13],[1,[28,[\"model\",\"fileName\"]],false],[14],[0,\"\\n    \"],[11,\"h6\",[]],[15,\"class\",\"card-subtitle mb-2 text-muted\"],[13],[0,\"File size: \"],[1,[28,[\"model\",\"fileSize\"]],false],[0,\" bytes\"],[14],[0,\"\\n  \"],[14],[0,\"\\n  \"],[11,\"div\",[]],[15,\"class\",\"card-block\"],[13],[0,\"\\n    \"],[11,\"ul\",[]],[15,\"class\",\"list-group\"],[13],[0,\"\\n      \"],[11,\"li\",[]],[15,\"class\",\"list-group-item justify-content-between\"],[13],[0,\"\\n        Total records\\n        \"],[11,\"span\",[]],[15,\"class\",\"badge badge-secondary\"],[13],[1,[28,[\"model\",\"totalRecordsCount\"]],false],[14],[0,\"\\n      \"],[14],[0,\"\\n      \"],[11,\"li\",[]],[15,\"class\",\"list-group-item justify-content-between\"],[13],[0,\"\\n        Matching records\\n        \"],[11,\"span\",[]],[15,\"class\",\"badge badge-secondary\"],[13],[1,[28,[\"model\",\"matchedRecordsCount\"]],false],[14],[0,\"\\n      \"],[14],[0,\"\\n      \"],[11,\"li\",[]],[15,\"class\",\"list-group-item justify-content-between\"],[13],[0,\"\\n        Unmatched records\\n        \"],[11,\"span\",[]],[15,\"class\",\"badge badge-secondary\"],[13],[1,[28,[\"model\",\"mismatchedRecordsCount\"]],false],[14],[0,\"\\n      \"],[14],[0,\"\\n    \"],[14],[0,\"\\n  \"],[14],[0,\"\\n\"],[14],[0,\"\\n\\n\"]],\"locals\":[],\"named\":[],\"yields\":[],\"hasPartials\":false}", "meta": { "moduleName": "webapp/templates/components/file-info.hbs" } });
+});
+define('webapp/transforms/utc', ['exports', 'ember-data', 'moment'], function (exports, _emberData, _moment) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = _emberData.default.Transform.extend({
+    serialize: function serialize(value) {
+      return value ? value.toJSON() : null;
+    },
+    deserialize: function deserialize(value) {
+      return _moment.default.utc(value);
+    }
+  });
+});
+define('webapp/utils/titleize', ['exports', 'ember-cli-string-helpers/utils/titleize'], function (exports, _titleize) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(exports, 'default', {
+    enumerable: true,
+    get: function () {
+      return _titleize.default;
+    }
+  });
 });
 
 
@@ -1301,6 +3273,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("webapp/app")["default"].create({"name":"webapp","version":"0.0.0+1e873eb9"});
+  require("webapp/app")["default"].create({"name":"webapp","version":"0.0.0+e628f7bf"});
 }
 //# sourceMappingURL=webapp.map

@@ -10,14 +10,24 @@ define('webapp/tests/app.lint-test', [], function () {
     assert.ok(true, 'app.js should pass ESLint\n\n');
   });
 
+  QUnit.test('breakpoints.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'breakpoints.js should pass ESLint\n\n');
+  });
+
   QUnit.test('components/file-info.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'components/file-info.js should pass ESLint\n\n');
   });
 
+  QUnit.test('initializers/responsive.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'initializers/responsive.js should pass ESLint\n\n');
+  });
+
   QUnit.test('models/comparison.js', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'models/comparison.js should pass ESLint\n\n23:16 - \'Ember\' is not defined. (no-undef)\n46:19 - \'Ember\' is not defined. (no-undef)\n59:5 - \'$\' is not defined. (no-undef)\n62:7 - \'$\' is not defined. (no-undef)\n65:9 - \'$\' is not defined. (no-undef)');
+    assert.ok(true, 'models/comparison.js should pass ESLint\n\n');
   });
 
   QUnit.test('models/markoff-file.js', function (assert) {
@@ -28,6 +38,11 @@ define('webapp/tests/app.lint-test', [], function () {
   QUnit.test('models/markoff-record.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'models/markoff-record.js should pass ESLint\n\n');
+  });
+
+  QUnit.test('models/suggestion.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'models/suggestion.js should pass ESLint\n\n');
   });
 
   QUnit.test('resolver.js', function (assert) {
@@ -58,6 +73,11 @@ define('webapp/tests/app.lint-test', [], function () {
   QUnit.test('routes/comparisons/comparison/report.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'routes/comparisons/comparison/report.js should pass ESLint\n\n');
+  });
+
+  QUnit.test('transforms/utc.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'transforms/utc.js should pass ESLint\n\n');
   });
 });
 define("webapp/tests/helpers/destroy-app", ["exports"], function (exports) {
@@ -118,6 +138,65 @@ define("webapp/tests/helpers/resolver", ["exports", "webapp/resolver", "webapp/c
   };
 
   exports.default = resolver;
+});
+define('webapp/tests/helpers/responsive', ['exports', 'ember-responsive/media'], function (exports, _media) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.setBreakpointForIntegrationTest = setBreakpointForIntegrationTest;
+  var getOwner = Ember.getOwner;
+  var classify = Ember.String.classify;
+
+
+  _media.default.reopen({
+    // Change this if you want a different default breakpoint in tests.
+    _defaultBreakpoint: 'desktop',
+
+    _breakpointArr: Ember.computed('breakpoints', function () {
+      return Object.keys(this.get('breakpoints')) || Ember.A([]);
+    }),
+
+    _forceSetBreakpoint: function _forceSetBreakpoint(breakpoint) {
+      var found = false;
+
+      var props = {};
+      this.get('_breakpointArr').forEach(function (bp) {
+        var val = bp === breakpoint;
+        if (val) {
+          found = true;
+        }
+
+        props['is' + classify(bp)] = val;
+      });
+
+      if (found) {
+        this.setProperties(props);
+      } else {
+        throw new Error('You tried to set the breakpoint to ' + breakpoint + ', which is not in your app/breakpoint.js file.');
+      }
+    },
+    match: function match() {},
+    init: function init() {
+      this._super.apply(this, arguments);
+
+      this._forceSetBreakpoint(this.get('_defaultBreakpoint'));
+    }
+  });
+
+  exports.default = Ember.Test.registerAsyncHelper('setBreakpoint', function (app, breakpoint) {
+    // this should use getOwner once that's supported
+    var mediaService = app.__deprecatedInstance__.lookup('service:media');
+    mediaService._forceSetBreakpoint(breakpoint);
+  });
+  function setBreakpointForIntegrationTest(container, breakpoint) {
+    var mediaService = getOwner(container).lookup('service:media');
+    mediaService._forceSetBreakpoint(breakpoint);
+    container.set('media', mediaService);
+
+    return mediaService;
+  }
 });
 define("webapp/tests/helpers/start-app", ["exports", "webapp/app", "webapp/config/environment"], function (exports, _app, _environment) {
   "use strict";
@@ -194,6 +273,11 @@ define('webapp/tests/tests.lint-test', [], function () {
     assert.ok(true, 'helpers/resolver.js should pass ESLint\n\n');
   });
 
+  QUnit.test('helpers/responsive.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'helpers/responsive.js should pass ESLint\n\n');
+  });
+
   QUnit.test('helpers/start-app.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'helpers/start-app.js should pass ESLint\n\n');
@@ -237,6 +321,11 @@ define('webapp/tests/tests.lint-test', [], function () {
   QUnit.test('unit/routes/comparisons/comparison/report-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'unit/routes/comparisons/comparison/report-test.js should pass ESLint\n\n');
+  });
+
+  QUnit.test('unit/transforms/utc-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'unit/transforms/utc-test.js should pass ESLint\n\n');
   });
 });
 define('webapp/tests/unit/models/comparison-test', ['ember-qunit'], function (_emberQunit) {
@@ -317,6 +406,20 @@ define('webapp/tests/unit/routes/comparisons/comparison/report-test', ['ember-qu
   (0, _emberQunit.test)('it exists', function (assert) {
     var route = this.subject();
     assert.ok(route);
+  });
+});
+define('webapp/tests/unit/transforms/utc-test', ['ember-qunit'], function (_emberQunit) {
+  'use strict';
+
+  (0, _emberQunit.moduleFor)('transform:utc', 'Unit | Transform | utc', {
+    // Specify the other units that are required for this test.
+    // needs: ['serializer:foo']
+  });
+
+  // Replace this with your real tests.
+  (0, _emberQunit.test)('it exists', function (assert) {
+    var transform = this.subject();
+    assert.ok(transform);
   });
 });
 require('webapp/tests/test-helper');

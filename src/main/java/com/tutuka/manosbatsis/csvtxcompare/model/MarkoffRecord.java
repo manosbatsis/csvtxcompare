@@ -1,7 +1,6 @@
 package com.tutuka.manosbatsis.csvtxcompare.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -64,7 +63,7 @@ public class MarkoffRecord {
 
 	private String profileName;
 
-	private Date transactionDate;
+	private String transactionDate;
 
 	private String transactionNarrative;
 
