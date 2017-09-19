@@ -10,9 +10,9 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
-/src/main/webapp/node_modules/
+/src/main/web/node_modules/
+/src/main/web/bower_components/
 /src/main/webapp/tmp/
 /csvtxcompare.iml
-/src/main/web/node_modules/
 /src/main/web/tmp/
 /.idea/

@@ -46,8 +46,8 @@ public class MismatchesControllerIT extends AbstractControllerIT {
 		// Read CSV files
 		String file1 = "ClientMarkoffFile20140113.csv";
 		String file2 = "TutukaMarkoffFile20140113.csv";
-		final byte[] bytes1 = IOUtils.toByteArray(getClass().getResourceAsStream("/" + file1));
-		final byte[] bytes2 = IOUtils.toByteArray(getClass().getResourceAsStream("/" + file2));
+		final byte[] bytes1 = IOUtils.toByteArray(getClass().getResourceAsStream("/static/" + file1));
+		final byte[] bytes2 = IOUtils.toByteArray(getClass().getResourceAsStream("/static/" + file2));
 		MarkoffFilesComparison c = new MarkoffFilesComparison();
 
 		// POST via multipart request, test for HTTP 200
@@ -70,7 +70,7 @@ public class MismatchesControllerIT extends AbstractControllerIT {
 		validateMarkoffFiles(comparison);
 
 		// try retrieving the persisted comparison
-		comparison = given()
+		comparison = given().log().all()
 				.when()
 					.get(Constants.REQUEST_MAPPING_COMPARISONS + "/" + comparison.getId())
 				.then()

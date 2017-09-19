@@ -20,6 +20,11 @@ define('webapp/tests/app.lint-test', [], function () {
     assert.ok(true, 'components/file-info.js should pass ESLint\n\n');
   });
 
+  QUnit.test('components/suggestions-table.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/suggestions-table.js should pass ESLint\n\n');
+  });
+
   QUnit.test('initializers/responsive.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'initializers/responsive.js should pass ESLint\n\n');
@@ -247,6 +252,36 @@ define("webapp/tests/integration/components/file-info-test", ["ember-qunit"], fu
     assert.equal(this.$().text().trim(), 'template block text');
   });
 });
+define('webapp/tests/integration/components/suggestions-table-test', ['ember-qunit'], function (_emberQunit) {
+  'use strict';
+
+  (0, _emberQunit.moduleForComponent)('suggestions-table', 'Integration | Component | suggestions table', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      "id": "GnSxQhur",
+      "block": "{\"statements\":[[1,[26,[\"suggestions-table\"]],false]],\"locals\":[],\"named\":[],\"yields\":[],\"hasPartials\":false}",
+      "meta": {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      "id": "J1Vb95J2",
+      "block": "{\"statements\":[[0,\"\\n\"],[6,[\"suggestions-table\"],null,null,{\"statements\":[[0,\"      template block text\\n\"]],\"locals\":[]},null],[0,\"  \"]],\"locals\":[],\"named\":[],\"yields\":[],\"hasPartials\":false}",
+      "meta": {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
 define("webapp/tests/test-helper", ["webapp/tests/helpers/resolver", "ember-qunit", "ember-cli-qunit"], function (_resolver, _emberQunit, _emberCliQunit) {
   "use strict";
 
@@ -286,6 +321,11 @@ define('webapp/tests/tests.lint-test', [], function () {
   QUnit.test('integration/components/file-info-test.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'integration/components/file-info-test.js should pass ESLint\n\n');
+  });
+
+  QUnit.test('integration/components/suggestions-table-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/suggestions-table-test.js should pass ESLint\n\n');
   });
 
   QUnit.test('test-helper.js', function (assert) {

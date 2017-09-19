@@ -72,7 +72,7 @@ public class ComparisonsController {
 	// ----------------------
 	@ApiOperation(value = "Find a markoff files comparison by ID", notes = API_DESC_FIND_ONE)
 	@RequestMapping(method = {RequestMethod.GET})
-	public MarkoffFilesComparison findOne(String id) {
+	public MarkoffFilesComparison findOne(@RequestParam(name = "id", required = true) String id) {
 		return this.service.findOne(id);
 	}
 
