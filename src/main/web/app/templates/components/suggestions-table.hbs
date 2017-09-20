@@ -1,17 +1,49 @@
 
   <!-- links to toggle coluimns on/off -->
   <p>
-    Toggle columns:
-    <a class="toggle-vis" data-column='0,10'>Record</a>,
-    <a class="toggle-vis" data-column='1,11'>Profile</a>,
-    <a class="toggle-vis" data-column='2,12'>Date</a>,
-    <a class="toggle-vis" data-column='3,13'>Amount</a>,
-    <a class="toggle-vis" data-column='4,14'>Narrative</a>,
-    <a class="toggle-vis" data-column='5,15'>Description</a>,
-    <a class="toggle-vis" data-column='6,16'>Id</a>,
-    <a class="toggle-vis" data-column='7,17'>Type</a>,
-    <a class="toggle-vis" data-column='8,18'>Wallet</a>,
-    <a class="toggle-vis" data-column='9'>Score</a>
+    Highest score matches are provided bellow. Toggle columns:
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="toggle-vis form-check-input" data-column='0,10' checked>
+        Record
+      </label>,
+      <label class="form-check-label">
+        <input type="checkbox" class="toggle-vis form-check-input" data-column='1,11'>
+        Profile
+      </label>,
+      <label class="form-check-label">
+        <input type="checkbox" class="toggle-vis form-check-input" data-column='2,12'>
+        Date
+      </label>,
+      <label class="form-check-label">
+        <input type="checkbox" class="toggle-vis form-check-input" data-column='3,13' checked>
+        Amount
+      </label>,
+      <label class="form-check-label">
+        <input type="checkbox" class="toggle-vis form-check-input" data-column='4,14'>
+        Narrative
+      </label>,
+      <label class="form-check-label">
+        <input type="checkbox" class="toggle-vis form-check-input" data-column='5,15'>
+        Description
+      </label>,
+      <label class="form-check-label">
+        <input type="checkbox" class="toggle-vis form-check-input" data-column='6,16'>
+        Id
+      </label>,
+      <label class="form-check-label">
+        <input type="checkbox" class="toggle-vis form-check-input" data-column='7,17'>
+        Type
+      </label>,
+      <label class="form-check-label">
+        <input type="checkbox" class="toggle-vis form-check-input" data-column='8,18'>
+        Wallet
+      </label>,
+      <label class="form-check-label">
+        <input type="checkbox" class="toggle-vis form-check-input" data-column='9' checked>
+        Score
+      </label>
+    </div>
   </p>
 
   <table id="suggestions-table" class='table table-stripped'>

@@ -6,7 +6,8 @@ Implementation of trial project for CSV transaction markoff files comparison
 
 - [Screen Shots](#screen-shots)
 	- [Complete with Suggestions Report](#complete-with-suggestions-report)
-	- [Additional Scores Report](#additional-scores-report)
+	- [Scores Report](#scores-report)
+	- [Data Diff Report](#data-diff-report)
 - [Notes](#notes)
 	- [Effort](#effort)
 	- [Prerequisites](#prerequisites)
@@ -30,11 +31,20 @@ This section provides UI deliverable screenshots.
 
 <img src="src/main/resources/img/ui-complete.png">
 
-### Additional Scores Report
+### Scores Report
 
-An additional report is accessible by a tab in the report section. The scores report demonstrates the scoring of suggested results as that results from field-by-field comparisons bewteen markoff records.
+A scores report is accessible by clicking the corresponding tab in the report section.
+The scores report demonstrates the scoring of suggested results as that results from
+field-by-field comparisons bewteen markoff records.
 
 <img src="src/main/resources/img/ui-scores.png">
+
+### Data Diff Report
+
+A data diff (daff) report is accessible by clicking the corresponding tab in the report section.
+The daff report demonstrates additions, deletions and other changes at record data level.
+
+<img src="src/main/resources/img/ui-daff.png">
 
 ## Notes
 
@@ -42,11 +52,11 @@ This section includes some informative items regarding the codebase.
 
 ### Effort
 
-This repo took about three man-days to setup in it's current form.
+This repo took about three and a half man-days to setup in it's current form.
 
 ### Prerequisites
 
-- A recent Firefox or Chrome browser, I've tested with FF 55.0.2 (64-bit) and  Chromium 60.0.3112.113. The application has <strong>not</strong> been tested with any version of IE. 
+- A recent Firefox or Chrome browser, I've tested with FF 55.0.2 (64-bit) and  Chromium 60.0.3112.113. The application has <strong>not</strong> been tested with any version of IE.
 - JDK 8 is required to build. Either Oracle or OpenJDK will do just fine, I've used the latter, v1.8.0_131
 - Apache Maven 3.3+ should be fine, I've used 3.3.9
 

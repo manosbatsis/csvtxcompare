@@ -5552,4 +5552,66 @@ a.text-dark:focus, a.text-dark:hover {
 .invisible {
   visibility: hidden !important; }
 
+/*http://paulfitz.github.io/daff/daff.css */
+.plus {
+  background: #8f8; }
+
+.minus {
+  background: #f88; }
+
+/** http://paulfitz.github.io/daff/daff_handsontable.css */
+#daff-container .add {
+  background-color: #7fff7f; }
+
+#daff-container .remove {
+  background-color: #ff7f7f; }
+
+#daff-container td.modify {
+  background-color: #7f7fff; }
+
+#daff-container td.conflict {
+  background-color: #f00; }
+
+#daff-container .spec {
+  background-color: #aaa; }
+
+#daff-container .move {
+  background-color: #ffa; }
+
+#daff-container .null {
+  color: #888; }
+
+#daff-container table {
+  border-collapse: collapse; }
+
+#daff-container td, #daff-container th {
+  border: 1px solid #2D4068;
+  padding: 3px 7px 2px; }
+
+#daff-container th, #daff-container .header {
+  background-color: #aaf;
+  font-weight: bold;
+  padding-bottom: 4px;
+  padding-top: 5px;
+  text-align: left; }
+
+#daff-container tr.header th {
+  border-bottom: 2px solid black; }
+
+#daff-container .gap {
+  color: #888; }
+
+#daff-container td {
+  empty-cells: show; }
+
+#daff-container tr:first-child td {
+  border-top: 1px solid #2D4068; }
+
+#daff-container td:first-child {
+  border-left: 1px solid #2D4068; }
+
+#daff-container tr.index td, #daff-container .index, #daff-container tr.header th.index, #daff-container td.index:first-child, #daff-container tr:first-child td.index {
+  background-color: white;
+  border: none; }
+
 /*# sourceMappingURL=webapp.css.map */

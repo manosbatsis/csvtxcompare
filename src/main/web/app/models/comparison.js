@@ -31,6 +31,7 @@ export default DS.Model.extend({
     });
   },
 
+
   getBlankRecord : function(){
     return {
       recordNumber: null,

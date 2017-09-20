@@ -34,7 +34,7 @@ export default Ember.Component.extend({
       ]
     });
 
-    this.$('a.toggle-vis').on( 'click', function (e) {
+    this.$('input.toggle-vis').on( 'change', function (e) {
       e.preventDefault();
 
       // Get the column API object

@@ -15,6 +15,11 @@ define('webapp/tests/app.lint-test', [], function () {
     assert.ok(true, 'breakpoints.js should pass ESLint\n\n');
   });
 
+  QUnit.test('components/daff-table.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'components/daff-table.js should pass ESLint\n\n');
+  });
+
   QUnit.test('components/file-info.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'components/file-info.js should pass ESLint\n\n');
@@ -222,6 +227,36 @@ define("webapp/tests/helpers/start-app", ["exports", "webapp/app", "webapp/confi
     });
   }
 });
+define('webapp/tests/integration/components/daff-table-test', ['ember-qunit'], function (_emberQunit) {
+  'use strict';
+
+  (0, _emberQunit.moduleForComponent)('daff-table', 'Integration | Component | daff table', {
+    integration: true
+  });
+
+  (0, _emberQunit.test)('it renders', function (assert) {
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template({
+      "id": "K0KRi4T4",
+      "block": "{\"statements\":[[1,[26,[\"daff-table\"]],false]],\"locals\":[],\"named\":[],\"yields\":[],\"hasPartials\":false}",
+      "meta": {}
+    }));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template({
+      "id": "lE+Ivv4U",
+      "block": "{\"statements\":[[0,\"\\n\"],[6,[\"daff-table\"],null,null,{\"statements\":[[0,\"      template block text\\n\"]],\"locals\":[]},null],[0,\"  \"]],\"locals\":[],\"named\":[],\"yields\":[],\"hasPartials\":false}",
+      "meta": {}
+    }));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+});
 define("webapp/tests/integration/components/file-info-test", ["ember-qunit"], function (_emberQunit) {
   "use strict";
 
@@ -316,6 +351,11 @@ define('webapp/tests/tests.lint-test', [], function () {
   QUnit.test('helpers/start-app.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'helpers/start-app.js should pass ESLint\n\n');
+  });
+
+  QUnit.test('integration/components/daff-table-test.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'integration/components/daff-table-test.js should pass ESLint\n\n');
   });
 
   QUnit.test('integration/components/file-info-test.js', function (assert) {

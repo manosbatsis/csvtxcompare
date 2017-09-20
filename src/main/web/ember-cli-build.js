@@ -8,6 +8,7 @@ module.exports = function (defaults) {
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
+
   //
   // If you need to use different assets in different
   // environments, specify an object as the first parameter. That
@@ -18,6 +19,6 @@ module.exports = function (defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-
+  app.import('bower_components/daff/daff.js');
   return app.toTree();
 };
