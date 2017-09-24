@@ -79,7 +79,7 @@ The font-end is a simple ember-based SPA, loosely following the mockup. The SPA 
 markoffs are given the x and y axis respectively. The table cells show the overall match score between the records and
 provide a tooltip for visual comparison (pending)
 
-The client UI project can be found in [src/main/web](src/mainweb). The build is mainly based on NPM. Main components:
+The client UI project can be found in [src/main/web](src/main/web). The build is mainly based on NPM. Main components:
 
 - [src/main/web/app/models/comparison.js](src/main/web/app/models/comparison.js) the leading entity model, also features computed properties used for cclose match suggestions
 - [src/main/web/app/components](src/main/web/app/components) UI components providinge the main UI widjets
